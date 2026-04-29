@@ -1,1 +1,1831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <title>Lazy3D Everyday Essentials | Addons Bundle</title>
+
+  <style>
+    :root {
+      --bg: #f3f5fb;
+      --bg-soft: #edf0f8;
+      --text: #090a0d;
+      --muted: rgba(9, 10, 13, 0.62);
+      --muted-2: rgba(9, 10, 13, 0.42);
+
+      --glass: rgba(255, 255, 255, 0.58);
+      --glass-strong: rgba(255, 255, 255, 0.78);
+      --glass-dark: rgba(15, 18, 28, 0.58);
+      --line: rgba(255, 255, 255, 0.72);
+      --line-dark: rgba(9, 10, 13, 0.1);
+
+      --shadow-xl: 0 40px 110px rgba(20, 24, 38, 0.18);
+      --shadow-lg: 0 26px 70px rgba(20, 24, 38, 0.14);
+      --shadow-md: 0 18px 42px rgba(20, 24, 38, 0.1);
+
+      --radius-xl: 38px;
+      --radius-lg: 30px;
+      --radius-md: 22px;
+
+      --max: 1180px;
+
+      --img-fog-1: url("https://assets.superhivemarket.com/store/productimage/1185440/image/xlarge_og-bd87081b1e3d6979ebeec98904d2e981.jpg");
+      --img-fog-2: url("https://assets.superhivemarket.com/store/productimage/1185443/image/xlarge_og-f9222559c74dd586e33ffefaaa5f2835.jpg");
+      --img-composer-1: url("https://assets.superhivemarket.com/store/productimage/1148849/image/xlarge_og-084358e4297708deb64cf7d87f8f001f.jpg");
+      --img-composer-2: url("https://assets.superhivemarket.com/store/productimage/1148853/image/xlarge_og-24c765c8c715788e6f4f6d71211e6958.jpg");
+      --img-light-1: url("https://assets.superhivemarket.com/cache/d4c900a0858509db16ae80ed8c1191b2.jpg");
+      --img-light-2: url("https://assets.superhivemarket.com/cache/cfb4bf8f684b55b02a97dbfd15aed3a7.jpg");
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(255, 255, 255, 0.95), transparent 28%),
+        radial-gradient(circle at 78% 10%, rgba(154, 180, 255, 0.35), transparent 32%),
+        radial-gradient(circle at 52% 52%, rgba(255, 255, 255, 0.5), transparent 34%),
+        linear-gradient(135deg, #f8f9fd 0%, #eef1f9 44%, #e2e7f3 100%);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -3;
+      background-image:
+        linear-gradient(rgba(9, 10, 13, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(9, 10, 13, 0.035) 1px, transparent 1px);
+      background-size: 54px 54px;
+      mask-image: linear-gradient(to bottom, black, transparent 74%);
+      opacity: 0.55;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img,
+    video {
+      display: block;
+      max-width: 100%;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .page {
+      position: relative;
+      min-height: 100vh;
+      isolation: isolate;
+      overflow: hidden;
+    }
+
+    .liquid-orb {
+      position: fixed;
+      width: 680px;
+      height: 680px;
+      border-radius: 999px;
+      pointer-events: none;
+      z-index: -2;
+      filter: blur(28px);
+      opacity: 0.72;
+      transform: translate3d(0, 0, 0);
+    }
+
+    .orb-a {
+      top: -250px;
+      left: -210px;
+      background:
+        radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.98), rgba(196, 205, 232, 0.55) 38%, transparent 68%);
+    }
+
+    .orb-b {
+      right: -260px;
+      top: 140px;
+      background:
+        radial-gradient(circle at 42% 38%, rgba(190, 206, 255, 0.72), rgba(255, 255, 255, 0.18) 42%, transparent 70%);
+    }
+
+    .orb-c {
+      left: 38%;
+      bottom: -360px;
+      background:
+        radial-gradient(circle at 45% 45%, rgba(255, 255, 255, 0.7), rgba(172, 184, 222, 0.28) 42%, transparent 70%);
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .glass {
+      position: relative;
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.38));
+      border: 1px solid rgba(255, 255, 255, 0.78);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.9),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.34),
+        var(--shadow-lg);
+      backdrop-filter: blur(30px) saturate(160%);
+      -webkit-backdrop-filter: blur(30px) saturate(160%);
+    }
+
+    .glass::before {
+      content: "";
+      position: absolute;
+      inset: 1px;
+      border-radius: inherit;
+      pointer-events: none;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.58), transparent 34%),
+        radial-gradient(circle at 22% 16%, rgba(255, 255, 255, 0.75), transparent 24%);
+      opacity: 0.72;
+      mix-blend-mode: screen;
+    }
+
+    .nav {
+      position: sticky;
+      top: 14px;
+      z-index: 60;
+      width: min(var(--max), calc(100% - 28px));
+      margin: 14px auto 0;
+      padding: 11px 12px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+    }
+
+    .brand-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 28% 24%, #fff 0 12%, rgba(255,255,255,0.38) 13% 30%, transparent 44%),
+        linear-gradient(135deg, #101114, #60677a);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.45),
+        0 14px 32px rgba(9,10,13,0.18);
+    }
+
+    .nav-links {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    .nav-links a {
+      transition: color .2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .btn {
+      position: relative;
+      z-index: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 22px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.68);
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      cursor: pointer;
+      overflow: hidden;
+      transition:
+        transform .24s ease,
+        box-shadow .24s ease,
+        background .24s ease,
+        border-color .24s ease;
+      white-space: nowrap;
+    }
+
+    .btn::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background:
+        linear-gradient(120deg, rgba(255,255,255,0.45), transparent 42%),
+        radial-gradient(circle at 20% 10%, rgba(255,255,255,0.7), transparent 30%);
+      opacity: 0.55;
+      pointer-events: none;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 22px 42px rgba(20, 24, 38, 0.16);
+    }
+
+    .btn-dark {
+      color: #fff;
+      background: linear-gradient(135deg, #0e1015, #2c3240);
+      border-color: rgba(255,255,255,0.22);
+      box-shadow: 0 18px 38px rgba(9, 10, 13, 0.24);
+    }
+
+    .btn-light {
+      color: var(--text);
+      background: rgba(255,255,255,0.56);
+      backdrop-filter: blur(20px) saturate(160%);
+      -webkit-backdrop-filter: blur(20px) saturate(160%);
+      box-shadow: 0 14px 32px rgba(20, 24, 38, 0.08);
+    }
+
+    .hero {
+      padding: 92px 0 56px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      align-items: center;
+      gap: 34px;
+    }
+
+    .eyebrow {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      color: rgba(9,10,13,0.68);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: -0.01em;
+    }
+
+    .eyebrow-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #11131a;
+      box-shadow: 0 0 0 6px rgba(9,10,13,0.08);
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 720px;
+      font-size: clamp(46px, 7.3vw, 92px);
+      line-height: 0.9;
+      letter-spacing: -0.085em;
+      font-weight: 900;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #090a0d 0%, #252b38 48%, #7f879a 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-text {
+      margin: 24px 0 0;
+      max-width: 650px;
+      color: var(--muted);
+      font-size: clamp(18px, 1.8vw, 22px);
+      line-height: 1.55;
+      letter-spacing: -0.025em;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .proof-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+
+    .proof-pill {
+      position: relative;
+      z-index: 1;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 13px;
+      border-radius: 999px;
+      color: rgba(9,10,13,0.62);
+      font-size: 13px;
+      font-weight: 850;
+    }
+
+    .proof-pill::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: rgba(9, 10, 13, 0.72);
+    }
+
+    .hero-stage {
+      position: relative;
+      min-height: 650px;
+      border-radius: 44px;
+      overflow: hidden;
+      transform-style: preserve-3d;
+    }
+
+    .hero-stage::after {
+      content: "";
+      position: absolute;
+      inset: auto 24px 20px;
+      height: 120px;
+      border-radius: 999px;
+      background: rgba(9,10,13,0.18);
+      filter: blur(32px);
+      z-index: 0;
+    }
+
+    .hero-visual {
+      position: absolute;
+      inset: 18px;
+      border-radius: 34px;
+      overflow: hidden;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,0.22), rgba(255,255,255,0.08)),
+        #10131a;
+      z-index: 1;
+    }
+
+    .hero-visual img {
+      position: absolute;
+      width: 64%;
+      height: 46%;
+      object-fit: cover;
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,0.38);
+      box-shadow:
+        0 30px 80px rgba(0,0,0,0.28),
+        inset 0 1px 0 rgba(255,255,255,0.3);
+      overflow: hidden;
+    }
+
+    .hero-visual img:nth-child(1) {
+      left: 5%;
+      top: 7%;
+      z-index: 2;
+      transform: rotate(-4deg);
+    }
+
+    .hero-visual img:nth-child(2) {
+      right: 5%;
+      top: 28%;
+      z-index: 3;
+      transform: rotate(4deg);
+    }
+
+    .hero-visual img:nth-child(3) {
+      left: 16%;
+      bottom: 7%;
+      z-index: 4;
+      transform: rotate(-1.5deg);
+    }
+
+    .hero-glow {
+      position: absolute;
+      inset: 0;
+      z-index: 5;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 22% 18%, rgba(255,255,255,0.34), transparent 22%),
+        radial-gradient(circle at 78% 52%, rgba(173,190,255,0.24), transparent 28%),
+        linear-gradient(120deg, rgba(255,255,255,0.18), transparent 42%);
+      mix-blend-mode: screen;
+    }
+
+    .hero-badge {
+      position: absolute;
+      z-index: 8;
+      left: 34px;
+      bottom: 34px;
+      right: 34px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .stack-card {
+      min-height: 128px;
+      border-radius: 26px;
+      padding: 17px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+    }
+
+    .stack-card small {
+      position: relative;
+      z-index: 1;
+      display: block;
+      margin-bottom: 6px;
+      color: rgba(9,10,13,0.48);
+      font-size: 11px;
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .stack-card strong {
+      position: relative;
+      z-index: 1;
+      display: block;
+      font-size: 18px;
+      line-height: 1.05;
+      letter-spacing: -0.05em;
+    }
+
+    section {
+      padding: 50px 0;
+    }
+
+    .section-head {
+      max-width: 820px;
+      margin-bottom: 26px;
+    }
+
+    .kicker {
+      margin-bottom: 10px;
+      color: rgba(9, 10, 13, 0.42);
+      font-size: 13px;
+      font-weight: 950;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(34px, 4.7vw, 64px);
+      line-height: 0.98;
+      letter-spacing: -0.07em;
+      font-weight: 900;
+    }
+
+    .section-text {
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.58;
+      letter-spacing: -0.025em;
+    }
+
+    .bundle-offer {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .offer-card {
+      min-height: 390px;
+      padding: clamp(28px, 4vw, 52px);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .offer-card.dark {
+      color: #fff;
+      background:
+        radial-gradient(circle at 72% 18%, rgba(255,255,255,0.24), transparent 26%),
+        radial-gradient(circle at 18% 88%, rgba(120,145,255,0.28), transparent 34%),
+        linear-gradient(135deg, #0d0f14, #2b3343 52%, #788092);
+      border: 1px solid rgba(255,255,255,0.18);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .offer-card.dark p {
+      color: rgba(255,255,255,0.72);
+    }
+
+    .deal-label {
+      position: relative;
+      z-index: 1;
+      display: inline-flex;
+      width: fit-content;
+      margin-bottom: 18px;
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.22);
+      color: rgba(255,255,255,0.86);
+      font-size: 13px;
+      font-weight: 950;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .price-line {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .price-card {
+      min-height: 390px;
+      border-radius: var(--radius-xl);
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+
+    .price-card-top {
+      position: relative;
+      z-index: 1;
+      min-height: 185px;
+      border-radius: 25px;
+      background-size: cover;
+      background-position: center;
+      overflow: hidden;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.26);
+    }
+
+    .price-card:nth-child(1) .price-card-top {
+      background-image:
+        linear-gradient(to bottom, rgba(0,0,0,0.08), rgba(0,0,0,0.28)),
+        var(--img-light-1);
+    }
+
+    .price-card:nth-child(2) .price-card-top {
+      background-image:
+        linear-gradient(to bottom, rgba(0,0,0,0.04), rgba(0,0,0,0.25)),
+        var(--img-fog-1);
+    }
+
+    .price-card:nth-child(3) .price-card-top {
+      background-image:
+        linear-gradient(to bottom, rgba(0,0,0,0.04), rgba(0,0,0,0.26)),
+        var(--img-composer-1);
+    }
+
+    .price-card h3 {
+      margin: 16px 0 0;
+      font-size: 22px;
+      line-height: 1.05;
+      letter-spacing: -0.055em;
+    }
+
+    .price-card p {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.48;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .product-card {
+      position: relative;
+      min-height: 610px;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .product-media {
+      position: relative;
+      z-index: 1;
+      height: 305px;
+      margin: 14px;
+      border-radius: 28px;
+      overflow: hidden;
+      background: #111;
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,0.32),
+        0 22px 48px rgba(20,24,38,0.14);
+    }
+
+    .product-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .6s ease;
+    }
+
+    .product-card:hover .product-media img {
+      transform: scale(1.045);
+    }
+
+    .product-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(to top, rgba(0,0,0,0.36), transparent 48%),
+        radial-gradient(circle at 20% 12%, rgba(255,255,255,0.28), transparent 22%);
+    }
+
+    .media-label {
+      position: absolute;
+      left: 14px;
+      bottom: 14px;
+      z-index: 2;
+      display: inline-flex;
+      padding: 8px 11px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.22);
+      border: 1px solid rgba(255,255,255,0.34);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 900;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .product-content {
+      position: relative;
+      z-index: 1;
+      padding: 6px 24px 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .tag {
+      display: inline-flex;
+      width: fit-content;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(9,10,13,0.07);
+      color: rgba(9,10,13,0.58);
+      font-size: 11px;
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 14px;
+    }
+
+    .product-content h3 {
+      margin: 0;
+      font-size: 31px;
+      line-height: 1;
+      letter-spacing: -0.065em;
+    }
+
+    .product-content p {
+      margin: 13px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.55;
+      letter-spacing: -0.015em;
+    }
+
+    .check-list {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 9px;
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .check-list li {
+      display: flex;
+      gap: 9px;
+      align-items: flex-start;
+      color: rgba(9,10,13,0.78);
+      font-size: 14px;
+      font-weight: 750;
+      line-height: 1.35;
+    }
+
+    .check-list li::before {
+      content: "";
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      flex: 0 0 auto;
+      margin-top: 0;
+      background:
+        radial-gradient(circle at 35% 30%, #fff, transparent 34%),
+        linear-gradient(135deg, rgba(9,10,13,0.92), rgba(88,96,116,0.92));
+      box-shadow: 0 8px 18px rgba(9,10,13,0.13);
+    }
+
+    .product-link {
+      position: relative;
+      z-index: 1;
+      margin-top: auto;
+      padding-top: 22px;
+    }
+
+    .workflow-shell {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 540px;
+    }
+
+    .workflow-copy {
+      padding: clamp(30px, 5vw, 60px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .workflow-steps {
+      position: relative;
+      z-index: 1;
+      padding: 22px;
+      display: grid;
+      align-content: center;
+      gap: 13px;
+      background:
+        radial-gradient(circle at 70% 20%, rgba(255,255,255,0.72), transparent 34%),
+        linear-gradient(135deg, rgba(255,255,255,0.2), rgba(9,10,13,0.04));
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 50px 1fr;
+      gap: 15px;
+      padding: 18px;
+      border-radius: 26px;
+    }
+
+    .step-num {
+      width: 50px;
+      height: 50px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        radial-gradient(circle at 30% 25%, rgba(255,255,255,0.95), transparent 22%),
+        linear-gradient(135deg, #101114, #4e576a);
+      color: #fff;
+      font-weight: 950;
+      box-shadow: 0 16px 32px rgba(9,10,13,0.17);
+    }
+
+    .step strong {
+      display: block;
+      font-size: 18px;
+      letter-spacing: -0.04em;
+      margin-bottom: 5px;
+    }
+
+    .step span {
+      display: block;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.48;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+
+    .gallery-card {
+      position: relative;
+      min-height: 270px;
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      background: #111;
+      isolation: isolate;
+    }
+
+    .gallery-card.wide {
+      grid-column: span 6;
+    }
+
+    .gallery-card.small {
+      grid-column: span 3;
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 100%;
+      min-height: 270px;
+      object-fit: cover;
+      transition: transform .55s ease;
+    }
+
+    .gallery-card:hover img {
+      transform: scale(1.04);
+    }
+
+    .gallery-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top, rgba(0,0,0,0.52), transparent 58%),
+        radial-gradient(circle at 18% 12%, rgba(255,255,255,0.24), transparent 24%);
+      z-index: 1;
+    }
+
+    .gallery-caption {
+      position: absolute;
+      left: 17px;
+      right: 17px;
+      bottom: 17px;
+      z-index: 2;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 14px;
+      color: #fff;
+    }
+
+    .gallery-caption strong {
+      display: block;
+      font-size: 17px;
+      letter-spacing: -0.04em;
+    }
+
+    .gallery-caption span {
+      display: block;
+      margin-top: 4px;
+      color: rgba(255,255,255,0.72);
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .feature-card {
+      min-height: 235px;
+      border-radius: 28px;
+      padding: 22px;
+      overflow: hidden;
+    }
+
+    .feature-icon {
+      position: relative;
+      z-index: 1;
+      width: 46px;
+      height: 46px;
+      border-radius: 18px;
+      margin-bottom: 19px;
+      background:
+        radial-gradient(circle at 30% 25%, #fff, transparent 34%),
+        linear-gradient(135deg, #101114, #6e778b);
+      box-shadow: 0 16px 32px rgba(9,10,13,0.14);
+    }
+
+    .feature-card h3 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.05;
+      letter-spacing: -0.045em;
+    }
+
+    .feature-card p {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.52;
+    }
+
+    .faq {
+      display: grid;
+      gap: 11px;
+    }
+
+    .faq-item {
+      border-radius: 24px;
+      overflow: hidden;
+    }
+
+    .faq-q {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      min-height: 64px;
+      padding: 20px 22px;
+      border: 0;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      color: var(--text);
+      font-weight: 900;
+      font-size: 16px;
+      letter-spacing: -0.025em;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .faq-plus {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(9,10,13,0.07);
+      color: rgba(9,10,13,0.62);
+      flex: 0 0 auto;
+      transition: transform .24s ease;
+    }
+
+    .faq-a {
+      position: relative;
+      z-index: 1;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .28s ease;
+    }
+
+    .faq-a p {
+      margin: 0;
+      padding: 0 22px 22px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .faq-item.active .faq-a {
+      max-height: 180px;
+    }
+
+    .faq-item.active .faq-plus {
+      transform: rotate(45deg);
+    }
+
+    .cta {
+      padding-bottom: 88px;
+    }
+
+    .cta-card {
+      position: relative;
+      min-height: 440px;
+      border-radius: 46px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      background:
+        radial-gradient(circle at 18% 16%, rgba(255,255,255,0.22), transparent 24%),
+        radial-gradient(circle at 90% 8%, rgba(179,199,255,0.28), transparent 28%),
+        linear-gradient(135deg, #0b0d12, #2b3344 52%, #8991a3);
+      color: #fff;
+      box-shadow: var(--shadow-xl);
+    }
+
+    .cta-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(120deg, rgba(255,255,255,0.17), transparent 38%),
+        radial-gradient(circle at 26% 76%, rgba(255,255,255,0.14), transparent 26%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .cta-copy {
+      position: relative;
+      z-index: 2;
+      padding: clamp(34px, 6vw, 72px);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .cta-copy p {
+      max-width: 650px;
+      color: rgba(255,255,255,0.72);
+      font-size: 18px;
+      line-height: 1.55;
+      margin: 18px 0 0;
+    }
+
+    .cta-visual {
+      position: relative;
+      z-index: 2;
+      min-height: 440px;
+      display: grid;
+      place-items: center;
+      padding: 28px;
+    }
+
+    .floating-pack {
+      width: min(100%, 420px);
+      display: grid;
+      gap: 14px;
+      transform: rotate(-2deg);
+    }
+
+    .pack-item {
+      min-height: 110px;
+      border-radius: 28px;
+      padding: 18px;
+      background: rgba(255,255,255,0.16);
+      border: 1px solid rgba(255,255,255,0.24);
+      backdrop-filter: blur(22px) saturate(150%);
+      -webkit-backdrop-filter: blur(22px) saturate(150%);
+      box-shadow: 0 28px 70px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .pack-item:nth-child(2) {
+      transform: translateX(-24px);
+    }
+
+    .pack-item:nth-child(3) {
+      transform: translateX(18px);
+    }
+
+    .pack-item strong {
+      display: block;
+      font-size: 18px;
+      letter-spacing: -0.045em;
+      line-height: 1.05;
+    }
+
+    .pack-item span {
+      display: block;
+      margin-top: 5px;
+      color: rgba(255,255,255,0.64);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .pack-dot {
+      width: 52px;
+      height: 52px;
+      border-radius: 20px;
+      flex: 0 0 auto;
+      background:
+        radial-gradient(circle at 30% 25%, #fff, transparent 34%),
+        linear-gradient(135deg, rgba(255,255,255,0.84), rgba(255,255,255,0.18));
+      border: 1px solid rgba(255,255,255,0.22);
+    }
+
+    .footer {
+      padding: 28px 0 44px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 14px;
+      font-weight: 650;
+    }
+
+    .back-top {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 80;
+      width: 50px;
+      height: 50px;
+      border: 1px solid rgba(255,255,255,0.72);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.62);
+      backdrop-filter: blur(22px) saturate(160%);
+      -webkit-backdrop-filter: blur(22px) saturate(160%);
+      box-shadow: 0 18px 42px rgba(20,24,38,0.14);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-weight: 950;
+      color: var(--text);
+    }
+
+    .back-top.visible {
+      display: flex;
+    }
+
+    @media (max-width: 1040px) {
+      .hero-grid,
+      .bundle-offer,
+      .workflow-shell,
+      .cta-card {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-stage {
+        min-height: 590px;
+      }
+
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .product-card {
+        min-height: auto;
+      }
+
+      .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .gallery-card.wide {
+        grid-column: span 12;
+      }
+
+      .gallery-card.small {
+        grid-column: span 6;
+      }
+
+      .price-line {
+        grid-template-columns: 1fr;
+      }
+
+      .price-card {
+        min-height: auto;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .container {
+        width: min(100% - 24px, var(--max));
+      }
+
+      .nav {
+        width: min(100% - 20px, var(--max));
+      }
+
+      .hero {
+        padding: 60px 0 38px;
+      }
+
+      .hero-stage {
+        min-height: 670px;
+        border-radius: 34px;
+      }
+
+      .hero-visual {
+        inset: 12px;
+      }
+
+      .hero-visual img {
+        width: 84%;
+        height: 31%;
+      }
+
+      .hero-visual img:nth-child(1) {
+        left: 8%;
+        top: 5%;
+      }
+
+      .hero-visual img:nth-child(2) {
+        right: 8%;
+        top: 34%;
+      }
+
+      .hero-visual img:nth-child(3) {
+        left: 8%;
+        bottom: 5%;
+      }
+
+      .hero-badge {
+        grid-template-columns: 1fr;
+        left: 24px;
+        right: 24px;
+        bottom: 24px;
+      }
+
+      .stack-card {
+        min-height: 84px;
+      }
+
+      .hero-actions,
+      .cta-actions {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-card.small {
+        grid-column: span 12;
+      }
+
+      .product-media {
+        height: 245px;
+      }
+
+      h1 {
+        letter-spacing: -0.075em;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page" id="top">
+    <div class="liquid-orb orb-a"></div>
+    <div class="liquid-orb orb-b"></div>
+    <div class="liquid-orb orb-c"></div>
+
+    <header class="nav glass">
+      <a class="brand" href="#top" aria-label="Lazy3D Everyday Essentials">
+        <span class="brand-mark"></span>
+        <span>Lazy3D Essentials</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Page navigation">
+        <a href="#included">Included</a>
+        <a href="#deal">Bundle Deal</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#gallery">Media</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <a class="btn btn-dark" href="#buy">Get Bundle</a>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <div class="eyebrow glass">
+              <span class="eyebrow-dot"></span>
+              Full premium versions - 3 addons in one bundle
+            </div>
+
+            <h1>
+              <span class="gradient-text">Everyday cinematic tools for Blender scenes.</span>
+            </h1>
+
+            <p class="hero-text">
+              Lazy3D Everyday Essentials combines artistic lighting, realistic atmosphere, and final image polish into one practical Blender toolkit.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn btn-dark" href="#buy">Get 3 Addons Bundle</a>
+              <a class="btn btn-light" href="#included">Explore Included Tools</a>
+            </div>
+
+            <div class="proof-row">
+              <span class="proof-pill glass">LightMaster Pro</span>
+              <span class="proof-pill glass">Physical Fog Pro</span>
+              <span class="proof-pill glass">Lazy Composer 2 Pro</span>
+              <span class="proof-pill glass">3 for the price of 2</span>
+            </div>
+          </div>
+
+          <div class="hero-stage glass" aria-label="Bundle visual preview">
+            <div class="hero-visual">
+              <img src="https://assets.superhivemarket.com/cache/d4c900a0858509db16ae80ed8c1191b2.jpg" alt="LightMaster Pro lighting preview">
+              <img src="https://assets.superhivemarket.com/store/productimage/1185440/image/xlarge_og-bd87081b1e3d6979ebeec98904d2e981.jpg" alt="Physical Fog atmospheric forest preview">
+              <img src="https://assets.superhivemarket.com/store/productimage/1148849/image/xlarge_og-084358e4297708deb64cf7d87f8f001f.jpg" alt="Lazy Composer cinematic before and after preview">
+              <div class="hero-glow"></div>
+            </div>
+
+            <div class="hero-badge">
+              <div class="stack-card glass">
+                <small>Lighting</small>
+                <strong>LightMaster Pro</strong>
+              </div>
+
+              <div class="stack-card glass">
+                <small>Atmosphere</small>
+                <strong>Physical Fog Pro</strong>
+              </div>
+
+              <div class="stack-card glass">
+                <small>Post FX</small>
+                <strong>Lazy Composer 2 Pro</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="deal">
+        <div class="container">
+          <div class="bundle-offer">
+            <article class="offer-card dark">
+              <span class="deal-label">Bundle Deal - 3 for the price of 2</span>
+              <h2>One compact bundle for your daily render workflow.</h2>
+              <p class="section-text">
+                Light the scene, add volumetric depth, then finish the image with cinematic post-processing. Three production-focused Lazy3D tools packed into one creator bundle.
+              </p>
+              <div class="hero-actions">
+                <a class="btn btn-light" href="#buy">Get the Bundle</a>
+                <a class="btn btn-light" href="#included">See Addons</a>
+              </div>
+            </article>
+
+            <div class="price-line">
+              <article class="price-card glass">
+                <div class="price-card-top"></div>
+                <div>
+                  <h3>Light</h3>
+                  <p>Fast texture-driven lighting workflow with ready-made setups and artistic light textures.</p>
+                </div>
+              </article>
+
+              <article class="price-card glass">
+                <div class="price-card-top"></div>
+                <div>
+                  <h3>Atmosphere</h3>
+                  <p>Fog, mist, haze, volumetric depth, FogPlanes, and physical volume interaction.</p>
+                </div>
+              </article>
+
+              <article class="price-card glass">
+                <div class="price-card-top"></div>
+                <div>
+                  <h3>Finish</h3>
+                  <p>Film-style color, lens effects, grain, halation, bloom, streaks, and final polish.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="included">
+        <div class="container">
+          <div class="section-head">
+            <div class="kicker">What's included</div>
+            <h2>Three full Lazy3D addons for the parts of Blender work you touch constantly.</h2>
+            <p class="section-text">
+              This bundle is built around the most repeated visual tasks: lighting, atmosphere, and finishing.
+            </p>
+          </div>
+
+          <div class="product-grid">
+            <article class="product-card glass">
+              <div class="product-media">
+                <img src="https://assets.superhivemarket.com/cache/d4c900a0858509db16ae80ed8c1191b2.jpg" alt="LightMaster Pro render preview">
+                <span class="media-label">Artistic lighting toolkit</span>
+              </div>
+
+              <div class="product-content">
+                <span class="tag">Lighting</span>
+                <h3>LightMaster Pro</h3>
+                <p>
+                  A fast lighting workflow for browsing assets, importing ready-made setups, placing lights directly in the viewport, and shaping the final look with texture-driven controls.
+                </p>
+
+                <ul class="check-list">
+                  <li>400+ lighting assets and light textures</li>
+                  <li>Advanced Placement for fast light aiming</li>
+                  <li>Cycles and Eevee workflows</li>
+                  <li>PaintMask tools for editing light textures</li>
+                </ul>
+
+                <div class="product-link">
+                  <a class="btn btn-light" href="https://superhivemarket.com/products/light-master-pro" target="_blank" rel="noopener">View LightMaster Pro</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="product-card glass">
+              <div class="product-media">
+                <img src="https://assets.superhivemarket.com/store/productimage/1185440/image/xlarge_og-bd87081b1e3d6979ebeec98904d2e981.jpg" alt="Physical Fog atmospheric render preview">
+                <span class="media-label">Fog, mist and haze</span>
+              </div>
+
+              <div class="product-content">
+                <span class="tag">Atmosphere</span>
+                <h3>Physical Fog Pro</h3>
+                <p>
+                  Create cinematic volumetric fog in minutes with AutoFog, layered presets, FogPlanes, photorealistic scattering, and dynamic physical volume interaction.
+                </p>
+
+                <ul class="check-list">
+                  <li>AutoFog system with instant scene depth</li>
+                  <li>Distance, height, wind, and noise controls</li>
+                  <li>FogPlanes with flowmaps - 49 assets</li>
+                  <li>Photorealistic Volume for Cycles</li>
+                </ul>
+
+                <div class="product-link">
+                  <a class="btn btn-light" href="https://superhivemarket.com/products/physical-fog-addon" target="_blank" rel="noopener">View Physical Fog</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="product-card glass">
+              <div class="product-media">
+                <img src="https://assets.superhivemarket.com/store/productimage/1148849/image/xlarge_og-084358e4297708deb64cf7d87f8f001f.jpg" alt="Lazy Composer 2 Pro before and after render preview">
+                <span class="media-label">Film look and post FX</span>
+              </div>
+
+              <div class="product-content">
+                <span class="tag">Composition</span>
+                <h3>Lazy Composer 2 Pro</h3>
+                <p>
+                  A reusable Blender compositor stack for cinematic color, lens effects, film grain, bloom, halation, glint, vignette, and final image polish.
+                </p>
+
+                <ul class="check-list">
+                  <li>One-click looks with presets</li>
+                  <li>Advanced color correction controls</li>
+                  <li>Lens dirt, distortion, bloom, and streaks</li>
+                  <li>Non-destructive compositor workflow</li>
+                </ul>
+
+                <div class="product-link">
+                  <a class="btn btn-light" href="https://superhivemarket.com/products/lazy-composer-2-pro" target="_blank" rel="noopener">View Lazy Composer</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="workflow">
+        <div class="container">
+          <div class="workflow-shell glass">
+            <div class="workflow-copy">
+              <div class="kicker">Workflow</div>
+              <h2>From flat render to cinematic scene in three practical layers.</h2>
+              <p class="section-text">
+                The bundle is not just three separate addons. It is a simple visual pipeline: establish the light, build atmosphere, then finish the image.
+              </p>
+              <div class="hero-actions">
+                <a class="btn btn-dark" href="#gallery">See Media</a>
+                <a class="btn btn-light" href="#faq">Read FAQ</a>
+              </div>
+            </div>
+
+            <div class="workflow-steps">
+              <div class="step glass">
+                <div class="step-num">01</div>
+                <div>
+                  <strong>Build the lighting mood</strong>
+                  <span>Use LightMaster Pro to test cinematic light directions, gobos, projected textures, and ready-made lighting setups.</span>
+                </div>
+              </div>
+
+              <div class="step glass">
+                <div class="step-num">02</div>
+                <div>
+                  <strong>Add depth and atmosphere</strong>
+                  <span>Use Physical Fog Pro for haze, ground fog, light beams, dense fog, distance separation, and volumetric realism.</span>
+                </div>
+              </div>
+
+              <div class="step glass">
+                <div class="step-num">03</div>
+                <div>
+                  <strong>Finish the image</strong>
+                  <span>Use Lazy Composer 2 Pro for color, glow, grain, halation, lens artifacts, vignette, and final cinematic polish.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="gallery">
+        <div class="container">
+          <div class="section-head">
+            <div class="kicker">Media from products</div>
+            <h2>Real previews from the included addons.</h2>
+            <p class="section-text">
+              The layout uses product media so the bundle page feels connected to the actual tools, not like a generic bundle block.
+            </p>
+          </div>
+
+          <div class="gallery-grid">
+            <article class="gallery-card wide">
+              <img src="https://assets.superhivemarket.com/store/productimage/1185443/image/xlarge_og-f9222559c74dd586e33ffefaaa5f2835.jpg" alt="Physical Fog car in fog preview">
+              <div class="gallery-caption">
+                <div>
+                  <strong>Physical Fog Pro</strong>
+                  <span>Dense cinematic fog and volumetric depth</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="gallery-card wide">
+              <img src="https://assets.superhivemarket.com/store/productimage/1148853/image/xlarge_og-24c765c8c715788e6f4f6d71211e6958.jpg" alt="Lazy Composer aircraft before and after preview">
+              <div class="gallery-caption">
+                <div>
+                  <strong>Lazy Composer 2 Pro</strong>
+                  <span>Before and after film-style finishing</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="gallery-card small">
+              <img src="https://assets.superhivemarket.com/cache/cfb4bf8f684b55b02a97dbfd15aed3a7.jpg" alt="Default lighting comparison preview">
+              <div class="gallery-caption">
+                <div>
+                  <strong>Default Light</strong>
+                  <span>Before lighting workflow</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="gallery-card small">
+              <img src="https://assets.superhivemarket.com/cache/d4c900a0858509db16ae80ed8c1191b2.jpg" alt="LightMaster Pro lighting result preview">
+              <div class="gallery-caption">
+                <div>
+                  <strong>LightMaster Pro</strong>
+                  <span>Stylized lighting result</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="gallery-card small">
+              <img src="https://assets.superhivemarket.com/store/productimage/1185445/image/xlarge_og-db614ea477c6d9b59510c99f6554e229.jpg" alt="Physical Fog street fog preview">
+              <div class="gallery-caption">
+                <div>
+                  <strong>Atmosphere</strong>
+                  <span>Street haze and scene depth</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="gallery-card small">
+              <img src="https://assets.superhivemarket.com/store/productimage/1148854/image/xlarge_og-c2e851e9f086b33119d19ba8247521a0.jpg" alt="Lazy Composer interior before and after preview">
+              <div class="gallery-caption">
+                <div>
+                  <strong>Final Polish</strong>
+                  <span>Color, light and lens effects</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="section-head">
+            <div class="kicker">Why this bundle</div>
+            <h2>Built for the effects artists actually repeat across many projects.</h2>
+          </div>
+
+          <div class="feature-grid">
+            <article class="feature-card glass">
+              <div class="feature-icon"></div>
+              <h3>Faster look development</h3>
+              <p>Start with ready-made lighting, fog and post-processing systems instead of rebuilding the same setup every time.</p>
+            </article>
+
+            <article class="feature-card glass">
+              <div class="feature-icon"></div>
+              <h3>More cinematic depth</h3>
+              <p>Lighting and fog work together to add separation, atmosphere, volume, and stronger visual hierarchy.</p>
+            </article>
+
+            <article class="feature-card glass">
+              <div class="feature-icon"></div>
+              <h3>Cleaner final renders</h3>
+              <p>Lazy Composer adds the final film-style pass: color, grain, bloom, streaks, halation, glint and vignette.</p>
+            </article>
+
+            <article class="feature-card glass">
+              <div class="feature-icon"></div>
+              <h3>Better value</h3>
+              <p>Get three full premium Lazy3D addons together as an everyday production bundle.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq">
+        <div class="container">
+          <div class="section-head">
+            <div class="kicker">FAQ</div>
+            <h2>Common questions.</h2>
+          </div>
+
+          <div class="faq">
+            <article class="faq-item glass active">
+              <button class="faq-q" type="button">
+                <span>Which addons are included?</span>
+                <span class="faq-plus">+</span>
+              </button>
+              <div class="faq-a">
+                <p>The bundle includes LightMaster Pro, Physical Fog Pro, and Lazy Composer 2 Pro.</p>
+              </div>
+            </article>
+
+            <article class="faq-item glass">
+              <button class="faq-q" type="button">
+                <span>Are these the full versions?</span>
+                <span class="faq-plus">+</span>
+              </button>
+              <div class="faq-a">
+                <p>Yes. The page is written for the full premium versions of the included addons.</p>
+              </div>
+            </article>
+
+            <article class="faq-item glass">
+              <button class="faq-q" type="button">
+                <span>Is this bundle good for daily Blender work?</span>
+                <span class="faq-plus">+</span>
+              </button>
+              <div class="faq-a">
+                <p>Yes. It covers three common everyday needs: lighting, atmosphere, and final render polish.</p>
+              </div>
+            </article>
+
+            <article class="faq-item glass">
+              <button class="faq-q" type="button">
+                <span>Can I buy each addon separately?</span>
+                <span class="faq-plus">+</span>
+              </button>
+              <div class="faq-a">
+                <p>Yes. Each addon has its own product page, but the bundle is positioned as a better value option.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta" id="buy">
+        <div class="container">
+          <div class="cta-card">
+            <div class="cta-copy">
+              <div class="kicker" style="color: rgba(255,255,255,0.52);">Lazy3D Everyday Essentials</div>
+              <h2>Get lighting, atmosphere, and final polish in one Blender bundle.</h2>
+              <p>
+                A practical toolkit for artists who want faster cinematic lighting, realistic fog and haze, and a stronger final image without rebuilding the same workflows from scratch.
+              </p>
+
+              <div class="hero-actions">
+                <a class="btn btn-light" href="https://superhivemarket.com/products/light-master-pro" target="_blank" rel="noopener">LightMaster Pro</a>
+                <a class="btn btn-light" href="https://superhivemarket.com/products/physical-fog-addon" target="_blank" rel="noopener">Physical Fog</a>
+                <a class="btn btn-light" href="https://superhivemarket.com/products/lazy-composer-2-pro" target="_blank" rel="noopener">Lazy Composer</a>
+              </div>
+            </div>
+
+            <div class="cta-visual">
+              <div class="floating-pack">
+                <div class="pack-item">
+                  <div>
+                    <strong>LightMaster Pro</strong>
+                    <span>Lighting assets and placement</span>
+                  </div>
+                  <div class="pack-dot"></div>
+                </div>
+
+                <div class="pack-item">
+                  <div>
+                    <strong>Physical Fog Pro</strong>
+                    <span>Fog, mist, haze and volume</span>
+                  </div>
+                  <div class="pack-dot"></div>
+                </div>
+
+                <div class="pack-item">
+                  <div>
+                    <strong>Lazy Composer 2 Pro</strong>
+                    <span>Film look and compositor polish</span>
+                  </div>
+                  <div class="pack-dot"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        Lazy3D Everyday Essentials | Addons Bundle
+      </div>
+    </footer>
+
+    <button class="back-top" id="backTop" aria-label="Back to top">↑</button>
+  </div>
+
+  <script>
+    const faqItems = document.querySelectorAll(".faq-item");
+
+    faqItems.forEach((item) => {
+      const button = item.querySelector(".faq-q");
+
+      button.addEventListener("click", () => {
+        item.classList.toggle("active");
+      });
+    });
+
+    const backTop = document.getElementById("backTop");
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 620) {
+        backTop.classList.add("visible");
+      } else {
+        backTop.classList.remove("visible");
+      }
+    });
+
+    backTop.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
+
+    const tiltCards = document.querySelectorAll(".product-card, .hero-stage, .feature-card");
+
+    tiltCards.forEach((card) => {
+      card.addEventListener("mousemove", (event) => {
+        const rect = card.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+
+        const rotateX = ((y / rect.height) - 0.5) * -3;
+        const rotateY = ((x / rect.width) - 0.5) * 3;
+
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-3px)`;
+      });
+
+      card.addEventListener("mouseleave", () => {
+        card.style.transform = "";
+      });
+    });
+  </script>
+</body>
+</html>
