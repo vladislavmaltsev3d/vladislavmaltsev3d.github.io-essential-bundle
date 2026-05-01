@@ -12,34 +12,17 @@
 
   <style>
     :root {
-      --bg: #f3f5fb;
-      --bg-soft: #edf0f8;
       --text: #090a0d;
       --muted: rgba(9, 10, 13, 0.62);
       --muted-2: rgba(9, 10, 13, 0.42);
-
       --glass: rgba(255, 255, 255, 0.58);
       --glass-strong: rgba(255, 255, 255, 0.78);
-      --glass-dark: rgba(15, 18, 28, 0.58);
-      --line: rgba(255, 255, 255, 0.72);
-      --line-dark: rgba(9, 10, 13, 0.1);
-
       --shadow-xl: 0 40px 110px rgba(20, 24, 38, 0.18);
       --shadow-lg: 0 26px 70px rgba(20, 24, 38, 0.14);
       --shadow-md: 0 18px 42px rgba(20, 24, 38, 0.1);
-
       --radius-xl: 38px;
       --radius-lg: 30px;
-      --radius-md: 22px;
-
       --max: 1180px;
-
-      --img-fog-1: url("https://assets.superhivemarket.com/store/productimage/1185440/image/xlarge_og-bd87081b1e3d6979ebeec98904d2e981.jpg");
-      --img-fog-2: url("https://assets.superhivemarket.com/store/productimage/1185443/image/xlarge_og-f9222559c74dd586e33ffefaaa5f2835.jpg");
-      --img-composer-1: url("https://assets.superhivemarket.com/store/productimage/1148849/image/xlarge_og-084358e4297708deb64cf7d87f8f001f.jpg");
-      --img-composer-2: url("https://assets.superhivemarket.com/store/productimage/1148853/image/xlarge_og-24c765c8c715788e6f4f6d71211e6958.jpg");
-      --img-light-1: url("https://assets.superhivemarket.com/cache/d4c900a0858509db16ae80ed8c1191b2.jpg");
-      --img-light-2: url("https://assets.superhivemarket.com/cache/cfb4bf8f684b55b02a97dbfd15aed3a7.jpg");
     }
 
     * {
@@ -47,7 +30,7 @@
     }
 
     html {
-      scroll-behavior: smooth;
+      scroll-behavior: auto;
     }
 
     body {
@@ -55,26 +38,12 @@
       min-height: 100vh;
       font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--text);
-      background:
-        radial-gradient(circle at 12% 8%, rgba(255, 255, 255, 0.95), transparent 28%),
-        radial-gradient(circle at 78% 10%, rgba(154, 180, 255, 0.35), transparent 32%),
-        radial-gradient(circle at 52% 52%, rgba(255, 255, 255, 0.5), transparent 34%),
-        linear-gradient(135deg, #f8f9fd 0%, #eef1f9 44%, #e2e7f3 100%);
+      background: #ffffff;
       overflow-x: hidden;
     }
 
     body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: -3;
-      background-image:
-        linear-gradient(rgba(9, 10, 13, 0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(9, 10, 13, 0.035) 1px, transparent 1px);
-      background-size: 54px 54px;
-      mask-image: linear-gradient(to bottom, black, transparent 74%);
-      opacity: 0.55;
+      display: none;
     }
 
     a {
@@ -82,10 +51,10 @@
       text-decoration: none;
     }
 
-    img,
-    video {
+    img {
       display: block;
       max-width: 100%;
+      height: auto;
     }
 
     button {
@@ -100,36 +69,25 @@
     }
 
     .liquid-orb {
-      position: fixed;
-      width: 680px;
-      height: 680px;
-      border-radius: 999px;
-      pointer-events: none;
-      z-index: -2;
-      filter: blur(28px);
-      opacity: 0.72;
-      transform: translate3d(0, 0, 0);
+      display: none;
     }
 
     .orb-a {
       top: -250px;
       left: -210px;
-      background:
-        radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.98), rgba(196, 205, 232, 0.55) 38%, transparent 68%);
+      background: radial-gradient(circle at 35% 35%, rgba(255,255,255,0.98), rgba(196,205,232,0.55) 38%, transparent 68%);
     }
 
     .orb-b {
       right: -260px;
       top: 140px;
-      background:
-        radial-gradient(circle at 42% 38%, rgba(190, 206, 255, 0.72), rgba(255, 255, 255, 0.18) 42%, transparent 70%);
+      background: radial-gradient(circle at 42% 38%, rgba(190,206,255,0.72), rgba(255,255,255,0.18) 42%, transparent 70%);
     }
 
     .orb-c {
       left: 38%;
       bottom: -360px;
-      background:
-        radial-gradient(circle at 45% 45%, rgba(255, 255, 255, 0.7), rgba(172, 184, 222, 0.28) 42%, transparent 70%);
+      background: radial-gradient(circle at 45% 45%, rgba(255,255,255,0.7), rgba(172,184,222,0.28) 42%, transparent 70%);
     }
 
     .container {
@@ -139,28 +97,18 @@
 
     .glass {
       position: relative;
-      background:
-        linear-gradient(145deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.38));
-      border: 1px solid rgba(255, 255, 255, 0.78);
+      background: linear-gradient(145deg, rgba(255,255,255,0.78), rgba(255,255,255,0.38));
+      border: 1px solid rgba(255,255,255,0.78);
       box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.9),
-        inset 0 -1px 0 rgba(255, 255, 255, 0.34),
+        inset 0 1px 0 rgba(255,255,255,0.9),
+        inset 0 -1px 0 rgba(255,255,255,0.34),
         var(--shadow-lg);
       backdrop-filter: blur(30px) saturate(160%);
       -webkit-backdrop-filter: blur(30px) saturate(160%);
     }
 
     .glass::before {
-      content: "";
-      position: absolute;
-      inset: 1px;
-      border-radius: inherit;
-      pointer-events: none;
-      background:
-        linear-gradient(135deg, rgba(255, 255, 255, 0.58), transparent 34%),
-        radial-gradient(circle at 22% 16%, rgba(255, 255, 255, 0.75), transparent 24%);
-      opacity: 0.72;
-      mix-blend-mode: screen;
+      display: none;
     }
 
     .nav {
@@ -184,7 +132,7 @@
       align-items: center;
       gap: 10px;
       font-weight: 900;
-      letter-spacing: -0.04em;
+      letter-spacing: 0.02em;
     }
 
     .brand-mark {
@@ -194,9 +142,7 @@
       background:
         radial-gradient(circle at 28% 24%, #fff 0 12%, rgba(255,255,255,0.38) 13% 30%, transparent 44%),
         linear-gradient(135deg, #101114, #60677a);
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.45),
-        0 14px 32px rgba(9,10,13,0.18);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.45), 0 14px 32px rgba(9,10,13,0.18);
     }
 
     .nav-links {
@@ -208,10 +154,7 @@
       font-size: 13px;
       color: var(--muted);
       font-weight: 800;
-    }
-
-    .nav-links a {
-      transition: color .2s ease;
+      letter-spacing: 0.025em;
     }
 
     .nav-links a:hover {
@@ -227,18 +170,14 @@
       min-height: 48px;
       padding: 0 22px;
       border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.68);
+      border: 1px solid rgba(255,255,255,0.68);
       font-size: 14px;
       font-weight: 900;
       letter-spacing: -0.02em;
       cursor: pointer;
       overflow: hidden;
-      transition:
-        transform .24s ease,
-        box-shadow .24s ease,
-        background .24s ease,
-        border-color .24s ease;
       white-space: nowrap;
+      transition: transform .22s ease, box-shadow .22s ease, opacity .22s ease;
     }
 
     .btn::before {
@@ -251,18 +190,19 @@
         radial-gradient(circle at 20% 10%, rgba(255,255,255,0.7), transparent 30%);
       opacity: 0.55;
       pointer-events: none;
+      transition: left .24s ease, top .24s ease, opacity .24s ease;
     }
 
     .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 22px 42px rgba(20, 24, 38, 0.16);
+      transform: translateY(-1px);
+      box-shadow: 0 16px 32px rgba(20,24,38,0.11);
     }
 
     .btn-dark {
       color: #fff;
       background: linear-gradient(135deg, #0e1015, #2c3240);
       border-color: rgba(255,255,255,0.22);
-      box-shadow: 0 18px 38px rgba(9, 10, 13, 0.24);
+      box-shadow: 0 18px 38px rgba(9,10,13,0.24);
     }
 
     .btn-light {
@@ -270,40 +210,18 @@
       background: rgba(255,255,255,0.56);
       backdrop-filter: blur(20px) saturate(160%);
       -webkit-backdrop-filter: blur(20px) saturate(160%);
-      box-shadow: 0 14px 32px rgba(20, 24, 38, 0.08);
+      box-shadow: 0 14px 32px rgba(20,24,38,0.08);
     }
 
     .hero {
-      padding: 92px 0 56px;
+      padding: 86px 0 56px;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
+      grid-template-columns: 0.9fr 1.1fr;
       align-items: center;
       gap: 34px;
-    }
-
-    .eyebrow {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 20px;
-      padding: 9px 14px;
-      border-radius: 999px;
-      color: rgba(9,10,13,0.68);
-      font-size: 13px;
-      font-weight: 900;
-      letter-spacing: -0.01em;
-    }
-
-    .eyebrow-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: #11131a;
-      box-shadow: 0 0 0 6px rgba(9,10,13,0.08);
     }
 
     h1,
@@ -319,67 +237,68 @@
       max-width: 720px;
       font-size: clamp(46px, 7.3vw, 92px);
       line-height: 0.9;
-      letter-spacing: -0.085em;
+      letter-spacing: -0.04em;;
+      font-weight: 900;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(34px, 4.7vw, 64px);
+      line-height: 0.98;
+      letter-spacing: -0.04em;
       font-weight: 900;
     }
 
     .gradient-text {
-      background: linear-gradient(135deg, #090a0d 0%, #252b38 48%, #7f879a 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+      background: none;
+      -webkit-background-clip: initial;
+      background-clip: initial;
+      color: #000000;
     }
 
-    .hero-text {
-      margin: 24px 0 0;
-      max-width: 650px;
-      color: var(--muted);
+    .hero-text,
+    .section-text {
+      margin: 18px 0 0;
+      color: rgba(0, 0, 0, 0.68);
       font-size: clamp(18px, 1.8vw, 22px);
       line-height: 1.55;
-      letter-spacing: -0.025em;
+      letter-spacing: -0.005em;
     }
 
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 30px;
-    }
-
-    .proof-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 26px;
-    }
-
-    .proof-pill {
+    .hero-store-link {
       position: relative;
-      z-index: 1;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 13px;
-      border-radius: 999px;
-      color: rgba(9,10,13,0.62);
-      font-size: 13px;
-      font-weight: 850;
+      z-index: 2;
+      display: block;
+      width: 1200px;
+      max-width: calc(100vw - 40px);
+      margin: 22px 0 0;
+      border-radius: 0;
+      overflow: visible;
+      transform-origin: center;
+      transition: transform .22s ease, filter .22s ease;
     }
 
-    .proof-pill::before {
-      content: "";
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: rgba(9, 10, 13, 0.72);
+    .hero-store-link:hover {
+      transform: scale(1.025);
+      filter: saturate(1.04) contrast(1.02);
     }
+
+    .hero-store-link img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 0;
+    }
+
 
     .hero-stage {
       position: relative;
-      min-height: 650px;
       border-radius: 44px;
       overflow: hidden;
-      transform-style: preserve-3d;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
     }
 
     .hero-stage::after {
@@ -388,108 +307,302 @@
       inset: auto 24px 20px;
       height: 120px;
       border-radius: 999px;
-      background: rgba(9,10,13,0.18);
+      background: rgba(9,10,13,0.10);
       filter: blur(32px);
       z-index: 0;
     }
 
-    .hero-visual {
-      position: absolute;
-      inset: 18px;
-      border-radius: 34px;
+    .hero-collage {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      aspect-ratio: 760 / 1010;
+      min-height: 680px;
+
+      /* Adjust these values to move the two black "coming soon" cards.
+         Bigger top % = lower. Smaller top % = higher. */
+      --future-free-top: 74%;
+      --future-soon-top: 66%;
+      border-radius: 32px;
       overflow: hidden;
       background:
-        linear-gradient(145deg, rgba(255,255,255,0.22), rgba(255,255,255,0.08)),
-        #10131a;
-      z-index: 1;
+        radial-gradient(circle at 22% 16%, rgba(255,255,255,0.98), transparent 28%),
+        radial-gradient(circle at 72% 38%, rgba(226,232,248,0.62), transparent 38%),
+        radial-gradient(circle at 24% 78%, rgba(255,255,255,0.88), transparent 34%),
+        linear-gradient(135deg, #ffffff, #f7f8fb 54%, #eef1f8);
+      box-shadow: inset 0 0 0 1px rgba(9,10,13,0.06), 0 26px 70px rgba(20,24,38,0.12);
     }
 
-    .hero-visual img {
+    .hero-collage::after {
+      display: none;
+    }
+
+    .hero-product-tile {
       position: absolute;
-      width: 64%;
-      height: 46%;
-      object-fit: cover;
+      display: block;
+      padding: 0;
+      border: 1px solid rgba(255,255,255,0.24);
       border-radius: 28px;
-      border: 1px solid rgba(255,255,255,0.38);
-      box-shadow:
-        0 30px 80px rgba(0,0,0,0.28),
-        inset 0 1px 0 rgba(255,255,255,0.3);
       overflow: hidden;
+      background: #050608;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.18);
+      cursor: grab;
+      transform-origin: center;
+      transition: transform .24s ease, box-shadow .24s ease, filter .24s ease, border-color .24s ease;
+      touch-action: none;
+      user-select: none;
     }
 
-    .hero-visual img:nth-child(1) {
-      left: 5%;
-      top: 7%;
-      z-index: 2;
+    .hero-product-tile.is-dragging {
+      z-index: 120 !important;
+      cursor: grabbing;
+      transition: none !important;
+    }
+
+    .hero-product-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background: #050608;
+      transition: transform .28s ease;
+    }
+
+    .hero-product-tile:hover {
+      z-index: 60 !important;
+      transform: translateY(-3px) scale(1.015) rotate(0deg) !important;
+      box-shadow: 0 28px 70px rgba(0,0,0,0.24), inset 0 1px 0 rgba(255,255,255,0.28);
+      border-color: rgba(255,255,255,0.48);
+      filter: saturate(1.03) contrast(1.015);
+    }
+
+    .hero-product-tile:hover img {
+      transform: scale(1.015);
+    }
+
+    .hero-product-tile.active {
+      z-index: 9;
+      border-color: rgba(255,255,255,0.82);
+      box-shadow: 0 36px 100px rgba(0,0,0,0.34), 0 0 0 1px rgba(255,255,255,0.18), inset 0 1px 0 rgba(255,255,255,0.38);
+    }
+
+    .hero-product-tile.light {
+      width: 74%;
+      aspect-ratio: 2 / 1;
+      left: 8%;
+      top: 4%;
       transform: rotate(-4deg);
     }
 
-    .hero-visual img:nth-child(2) {
-      right: 5%;
-      top: 28%;
-      z-index: 3;
-      transform: rotate(4deg);
+    .hero-product-tile.fog {
+      width: 74%;
+      aspect-ratio: 2 / 1;
+      right: 2%;
+      top: 22%;
+      transform: rotate(6deg);
     }
 
-    .hero-visual img:nth-child(3) {
-      left: 16%;
-      bottom: 7%;
-      z-index: 4;
-      transform: rotate(-1.5deg);
+    .hero-product-tile.composer {
+      width: 74%;
+      aspect-ratio: 2 / 1;
+      left: 15%;
+      top: 42%;
+      transform: rotate(-2deg);
     }
 
-    .hero-glow {
+    .hero-product-tile.future-free {
+      width: 55%;
+      aspect-ratio: 2 / 1;
+      left: 6%;
+      top: var(--future-free-top);
+      transform: rotate(-3deg);
+      z-index: 7;
+    }
+
+    .hero-product-tile.future-soon {
+      width: 55%;
+      aspect-ratio: 2 / 1;
+      right: 3%;
+      top: var(--future-soon-top);
+      transform: rotate(6deg);
+      z-index: 8;
+    }
+
+    .hero-product-tile.future-free:hover,
+    .hero-product-tile.future-soon:hover {
+      z-index: 70 !important;
+    }
+
+    .hero-product-tile.future-free img,
+    .hero-product-tile.future-soon img {
+      filter: saturate(1.03) contrast(1.04);
+    }
+
+    .hero-sale-image-link {
+      position: relative;
+      z-index: 2;
+      display: block;
+      width: 1200px;
+      max-width: calc(100vw - 40px);
+      margin-top: 28px;
+      border-radius: 0;
+      overflow: visible;
+      transform-origin: center;
+      transition: transform .22s ease, filter .22s ease;
+    }
+
+    .hero-sale-image-link:hover {
+      transform: scale(1.02);
+      filter: saturate(1.04) contrast(1.02);
+    }
+
+    .hero-sale-image-link img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 0;
+    }
+
+    .hero-sale-confetti-layer {
       position: absolute;
       inset: 0;
-      z-index: 5;
-      pointer-events: none;
-      background:
-        radial-gradient(circle at 22% 18%, rgba(255,255,255,0.34), transparent 22%),
-        radial-gradient(circle at 78% 52%, rgba(173,190,255,0.24), transparent 28%),
-        linear-gradient(120deg, rgba(255,255,255,0.18), transparent 42%);
-      mix-blend-mode: screen;
-    }
-
-    .hero-badge {
-      position: absolute;
-      z-index: 8;
-      left: 34px;
-      bottom: 34px;
-      right: 34px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-
-    .stack-card {
-      min-height: 128px;
-      border-radius: 26px;
-      padding: 17px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
       overflow: hidden;
+      pointer-events: none;
+      z-index: 3;
     }
 
-    .stack-card small {
+    .hero-sale-confetti-piece {
+      position: absolute;
+      top: -24px;
+      width: 10px;
+      height: 16px;
+      border-radius: 2px;
+      opacity: 0.95;
+      pointer-events: none;
+      animation: heroConfettiFall linear forwards;
+      will-change: transform, opacity;
+    }
+
+    @keyframes heroConfettiFall {
+      0% {
+        transform: translate3d(0, -16px, 0) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      100% {
+        transform: translate3d(var(--confetti-x, 0px), calc(100% + 70px), 0) rotate(var(--confetti-rotate, 360deg));
+        opacity: 0;
+      }
+    }
+
+    .coming-card-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      text-align: center;
+      color: rgba(255,255,255,0.96);
+      font-size: clamp(18px, 2.5vw, 28px);
+      line-height: 1.05;
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      background: rgba(0,0,0,0.32);
+      opacity: 0;
+      transform: scale(0.98);
+      transition: opacity .22s ease, transform .22s ease;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      pointer-events: none;
+    }
+
+    .hero-product-tile.future-free:hover .coming-card-overlay,
+    .hero-product-tile.future-soon:hover .coming-card-overlay {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .hero-description-panel {
+      display: none;
+    }
+
+    .description-topline {
       position: relative;
       z-index: 1;
-      display: block;
-      margin-bottom: 6px;
-      color: rgba(9,10,13,0.48);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .description-tag,
+    .tag {
+      display: inline-flex;
+      width: fit-content;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(9,10,13,0.07);
+      color: rgba(9,10,13,0.58);
       font-size: 11px;
       font-weight: 950;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
     }
 
-    .stack-card strong {
+    .description-title {
+      margin: 0;
+      font-size: 28px;
+      line-height: 1;
+      letter-spacing: -0.065em;
+      font-weight: 900;
+    }
+
+    .description-copy {
+      margin: 11px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.52;
+      letter-spacing: -0.015em;
+    }
+
+    .description-list {
       position: relative;
       z-index: 1;
-      display: block;
-      font-size: 18px;
-      line-height: 1.05;
-      letter-spacing: -0.05em;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 16px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .description-list li {
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.54);
+      border: 1px solid rgba(255,255,255,0.7);
+      color: rgba(9,10,13,0.68);
+      font-size: 12px;
+      font-weight: 800;
+      box-shadow: 0 10px 24px rgba(20,24,38,0.06);
+    }
+
+    .description-link {
+      position: relative;
+      z-index: 1;
+      color: rgba(9,10,13,0.72);
+      font-size: 13px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .description-link:hover {
+      color: #090a0d;
     }
 
     section {
@@ -503,30 +616,16 @@
 
     .kicker {
       margin-bottom: 10px;
-      color: rgba(9, 10, 13, 0.42);
+      color: rgba(0,0,0,0.46);
       font-size: 13px;
       font-weight: 950;
       letter-spacing: 0.12em;
       text-transform: uppercase;
     }
 
-    h2 {
-      margin: 0;
-      font-size: clamp(34px, 4.7vw, 64px);
-      line-height: 0.98;
-      letter-spacing: -0.07em;
-      font-weight: 900;
-    }
-
-    .section-text {
-      margin: 16px 0 0;
-      color: var(--muted);
-      font-size: 18px;
-      line-height: 1.58;
-      letter-spacing: -0.025em;
-    }
-
-    .bundle-offer {
+    .bundle-offer,
+    .workflow-shell,
+    .cta-card {
       display: grid;
       grid-template-columns: 0.85fr 1.15fr;
       gap: 18px;
@@ -574,26 +673,52 @@
       -webkit-backdrop-filter: blur(16px);
     }
 
-    .price-line {
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .price-line,
+    .product-grid,
+    .feature-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
       gap: 14px;
+    }
+
+    .price-line {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .product-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .feature-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .price-card,
+    .feature-card {
+      border-radius: 28px;
+      overflow: hidden;
     }
 
     .price-card {
       min-height: 390px;
-      border-radius: var(--radius-xl);
       padding: 18px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      overflow: hidden;
     }
 
     .price-card-top {
       position: relative;
       z-index: 1;
-      min-height: 185px;
+      aspect-ratio: 2 / 1;
+      min-height: 0;
       border-radius: 25px;
       background-size: cover;
       background-position: center;
@@ -602,21 +727,15 @@
     }
 
     .price-card:nth-child(1) .price-card-top {
-      background-image:
-        linear-gradient(to bottom, rgba(0,0,0,0.08), rgba(0,0,0,0.28)),
-        var(--img-light-1);
+      background-image: linear-gradient(to bottom, rgba(0,0,0,0.08), rgba(0,0,0,0.28)), url("https://assets.superhivemarket.com/cache/d4c900a0858509db16ae80ed8c1191b2.jpg");
     }
 
     .price-card:nth-child(2) .price-card-top {
-      background-image:
-        linear-gradient(to bottom, rgba(0,0,0,0.04), rgba(0,0,0,0.25)),
-        var(--img-fog-1);
+      background-image: linear-gradient(to bottom, rgba(0,0,0,0.04), rgba(0,0,0,0.25)), url("https://assets.superhivemarket.com/cache/7c6b710e3854f6f4097030d621708bf5.jpg");
     }
 
     .price-card:nth-child(3) .price-card-top {
-      background-image:
-        linear-gradient(to bottom, rgba(0,0,0,0.04), rgba(0,0,0,0.26)),
-        var(--img-composer-1);
+      background-image: linear-gradient(to bottom, rgba(0,0,0,0.04), rgba(0,0,0,0.26)), url("https://assets.superhivemarket.com/cache/05fa08fd86d651d7baa763fe3e53c6b8.jpg");
     }
 
     .price-card h3 {
@@ -626,17 +745,12 @@
       letter-spacing: -0.055em;
     }
 
-    .price-card p {
+    .price-card p,
+    .feature-card p {
       margin: 10px 0 0;
       color: var(--muted);
       font-size: 14px;
       line-height: 1.48;
-    }
-
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
     }
 
     .product-card {
@@ -646,38 +760,35 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      transition:
-        transform .25s ease,
-        box-shadow .25s ease;
+      transition: transform .22s ease, box-shadow .22s ease;
     }
 
     .product-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-xl);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
     }
 
     .product-media {
       position: relative;
       z-index: 1;
-      height: 305px;
+      aspect-ratio: 2 / 1;
+      height: auto;
       margin: 14px;
       border-radius: 28px;
       overflow: hidden;
       background: #111;
-      box-shadow:
-        inset 0 0 0 1px rgba(255,255,255,0.32),
-        0 22px 48px rgba(20,24,38,0.14);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.32), 0 22px 48px rgba(20,24,38,0.14);
     }
 
     .product-media img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform .6s ease;
+      transition: transform .28s ease;
     }
 
     .product-card:hover .product-media img {
-      transform: scale(1.045);
+      transform: scale(1.015);
     }
 
     .product-media::after {
@@ -685,9 +796,7 @@
       position: absolute;
       inset: 0;
       pointer-events: none;
-      background:
-        linear-gradient(to top, rgba(0,0,0,0.36), transparent 48%),
-        radial-gradient(circle at 20% 12%, rgba(255,255,255,0.28), transparent 22%);
+      background: linear-gradient(to top, rgba(0,0,0,0.36), transparent 48%), radial-gradient(circle at 20% 12%, rgba(255,255,255,0.28), transparent 22%);
     }
 
     .media-label {
@@ -716,25 +825,17 @@
       flex: 1;
     }
 
-    .tag {
-      display: inline-flex;
-      width: fit-content;
-      padding: 7px 10px;
-      border-radius: 999px;
-      background: rgba(9,10,13,0.07);
-      color: rgba(9,10,13,0.58);
-      font-size: 11px;
-      font-weight: 950;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 14px;
-    }
-
-    .product-content h3 {
+    .product-content h3,
+    .feature-card h3 {
       margin: 0;
       font-size: 31px;
       line-height: 1;
       letter-spacing: -0.065em;
+    }
+
+    .feature-card h3 {
+      font-size: 20px;
+      letter-spacing: -0.045em;
     }
 
     .product-content p {
@@ -771,10 +872,7 @@
       height: 18px;
       border-radius: 999px;
       flex: 0 0 auto;
-      margin-top: 0;
-      background:
-        radial-gradient(circle at 35% 30%, #fff, transparent 34%),
-        linear-gradient(135deg, rgba(9,10,13,0.92), rgba(88,96,116,0.92));
+      background: radial-gradient(circle at 35% 30%, #fff, transparent 34%), linear-gradient(135deg, rgba(9,10,13,0.92), rgba(88,96,116,0.92));
       box-shadow: 0 8px 18px rgba(9,10,13,0.13);
     }
 
@@ -786,11 +884,9 @@
     }
 
     .workflow-shell {
-      position: relative;
+      grid-template-columns: 1fr 1fr;
       border-radius: var(--radius-xl);
       overflow: hidden;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
       min-height: 540px;
     }
 
@@ -808,9 +904,7 @@
       display: grid;
       align-content: center;
       gap: 13px;
-      background:
-        radial-gradient(circle at 70% 20%, rgba(255,255,255,0.72), transparent 34%),
-        linear-gradient(135deg, rgba(255,255,255,0.2), rgba(9,10,13,0.04));
+      background: radial-gradient(circle at 70% 20%, rgba(255,255,255,0.72), transparent 34%), linear-gradient(135deg, rgba(255,255,255,0.2), rgba(9,10,13,0.04));
     }
 
     .step {
@@ -828,9 +922,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background:
-        radial-gradient(circle at 30% 25%, rgba(255,255,255,0.95), transparent 22%),
-        linear-gradient(135deg, #101114, #4e576a);
+      background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.95), transparent 22%), linear-gradient(135deg, #101114, #4e576a);
       color: #fff;
       font-weight: 950;
       box-shadow: 0 16px 32px rgba(9,10,13,0.17);
@@ -854,11 +946,12 @@
       display: grid;
       grid-template-columns: repeat(12, 1fr);
       gap: 14px;
+      align-items: stretch;
     }
 
     .gallery-card {
       position: relative;
-      min-height: 270px;
+      min-height: 0;
       border-radius: 30px;
       overflow: hidden;
       box-shadow: var(--shadow-md);
@@ -870,30 +963,65 @@
       grid-column: span 6;
     }
 
-    .gallery-card.small {
-      grid-column: span 3;
+    .gallery-card.full {
+      grid-column: span 12;
     }
 
-    .gallery-card img {
+    .gallery-card.third {
+      grid-column: span 4;
+    }
+
+    .gallery-card.compare-wide {
+      aspect-ratio: 1000 / 500;
+      min-height: 0;
+    }
+
+    .gallery-card.compare-small {
+      aspect-ratio: 1000 / 500;
+      min-height: 0;
+    }
+
+    .gallery-card.lightmaster-showcase {
+      grid-column: span 12;
+      width: 100%;
+      aspect-ratio: 1000 / 500;
+      min-height: 0;
+    }
+
+    .gallery-card.fog-media {
+      min-height: 0;
+      background: #050608;
+    }
+
+    .gallery-card.fog-large {
+      aspect-ratio: 1000 / 500;
+    }
+
+    .gallery-card.fog-wide {
+      aspect-ratio: 1000 / 300;
+    }
+
+    .gallery-card > img,
+    .gallery-card .plain-media img,
+    .compare-layer img {
+      display: block;
       width: 100%;
       height: 100%;
-      min-height: 270px;
       object-fit: cover;
-      transition: transform .55s ease;
     }
 
-    .gallery-card:hover img {
-      transform: scale(1.04);
+    .gallery-card.fog-media > img {
+      object-fit: contain;
+      background: #050608;
     }
 
     .gallery-card::after {
       content: "";
       position: absolute;
       inset: 0;
-      background:
-        linear-gradient(to top, rgba(0,0,0,0.52), transparent 58%),
-        radial-gradient(circle at 18% 12%, rgba(255,255,255,0.24), transparent 24%);
+      background: linear-gradient(to top, rgba(0,0,0,0.52), transparent 58%), radial-gradient(circle at 18% 12%, rgba(255,255,255,0.24), transparent 24%);
       z-index: 1;
+      pointer-events: none;
     }
 
     .gallery-caption {
@@ -901,11 +1029,7 @@
       left: 17px;
       right: 17px;
       bottom: 17px;
-      z-index: 2;
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 14px;
+      z-index: 6;
       color: #fff;
     }
 
@@ -918,22 +1042,136 @@
     .gallery-caption span {
       display: block;
       margin-top: 4px;
-      color: rgba(255,255,255,0.72);
+      color: rgba(255,255,255,0.78);
       font-size: 13px;
       font-weight: 650;
     }
 
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
+    .compare-shell {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      --compare-position: 50%;
+    }
+
+    .compare-layer {
+      position: absolute;
+      inset: 0;
+    }
+
+    .compare-layer img {
+      position: absolute;
+      inset: 0;
+    }
+
+    .compare-layer.before {
+      z-index: 2;
+      width: 100%;
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(
+        to right,
+        #000 0%,
+        #000 calc(var(--compare-position) - 18px),
+        rgba(0,0,0,0.72) var(--compare-position),
+        transparent calc(var(--compare-position) + 18px),
+        transparent 100%
+      );
+      mask-image: linear-gradient(
+        to right,
+        #000 0%,
+        #000 calc(var(--compare-position) - 18px),
+        rgba(0,0,0,0.72) var(--compare-position),
+        transparent calc(var(--compare-position) + 18px),
+        transparent 100%
+      );
+      -webkit-mask-size: 100% 100%;
+      mask-size: 100% 100%;
+      -webkit-mask-repeat: no-repeat;
+      mask-repeat: no-repeat;
+    }
+
+    .compare-layer.after {
+      z-index: 1;
+    }
+
+    .compare-divider {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: var(--compare-position);
+      width: 2px;
+      transform: translateX(-1px);
+      background: rgba(255,255,255,0.88);
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.08), 0 0 18px rgba(255,255,255,0.45);
+      z-index: 4;
+      pointer-events: none;
+    }
+
+    .compare-handle {
+      position: absolute;
+      top: 50%;
+      left: var(--compare-position);
+      transform: translate(-50%, -50%);
+      z-index: 5;
+      width: 54px;
+      height: 54px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(255,255,255,0.92);
+      box-shadow: 0 16px 32px rgba(20,24,38,0.2);
+      color: #090a0d;
+      font-size: 20px;
+      font-weight: 900;
+      backdrop-filter: blur(18px) saturate(160%);
+      -webkit-backdrop-filter: blur(18px) saturate(160%);
+      pointer-events: none;
+    }
+
+    .compare-side-labels {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      right: 16px;
+      z-index: 6;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      pointer-events: none;
+    }
+
+    .compare-side-label {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.28);
+      color: rgba(255,255,255,0.96);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+    }
+
+    .compare-range {
+      position: absolute;
+      inset: 0;
+      z-index: 7;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: ew-resize;
+      margin: 0;
     }
 
     .feature-card {
       min-height: 235px;
-      border-radius: 28px;
       padding: 22px;
-      overflow: hidden;
     }
 
     .feature-icon {
@@ -943,25 +1181,289 @@
       height: 46px;
       border-radius: 18px;
       margin-bottom: 19px;
-      background:
-        radial-gradient(circle at 30% 25%, #fff, transparent 34%),
-        linear-gradient(135deg, #101114, #6e778b);
+      background: radial-gradient(circle at 30% 25%, #fff, transparent 34%), linear-gradient(135deg, #101114, #6e778b);
       box-shadow: 0 16px 32px rgba(9,10,13,0.14);
     }
 
-    .feature-card h3 {
-      margin: 0;
-      font-size: 20px;
-      line-height: 1.05;
-      letter-spacing: -0.045em;
+
+    .future-updates-section {
+      padding: 26px 0 56px;
     }
 
-    .feature-card p {
-      margin: 10px 0 0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.52;
+    .future-updates-box {
+      position: relative;
+      border-radius: 42px;
+      padding: clamp(24px, 4vw, 46px);
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 18% 12%, rgba(255,255,255,0.95), transparent 28%),
+        linear-gradient(145deg, rgba(255,255,255,0.92), rgba(247,248,252,0.72));
+      border: 1px solid rgba(9,10,13,0.06);
+      box-shadow: 0 28px 72px rgba(20,24,38,0.10);
     }
+
+    .future-updates-head {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      margin-bottom: 24px;
+    }
+
+    .future-updates-head h2 {
+      color: #000;
+    }
+
+    .future-updates-note {
+      margin-top: 16px;
+      max-width: 880px;
+      color: rgba(0,0,0,0.66);
+      font-size: 18px;
+      line-height: 1.58;
+      letter-spacing: -0.02em;
+    }
+
+    .future-updates-note strong {
+      color: #000;
+      font-weight: 900;
+    }
+
+    .future-table {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .future-row {
+      display: grid;
+      grid-template-columns: 1fr minmax(130px, 180px);
+      gap: clamp(18px, 3vw, 34px);
+      align-items: center;
+      padding: clamp(14px, 2vw, 20px);
+      border-radius: 32px;
+      background: rgba(255,255,255,0.70);
+      border: 1px solid rgba(9,10,13,0.07);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.92),
+        0 20px 48px rgba(20,24,38,0.08);
+    }
+
+    .future-question-media {
+      position: relative;
+      order: 2;
+      width: 100%;
+      max-width: 180px;
+      justify-self: end;
+      aspect-ratio: 9 / 16;
+      min-height: 0;
+      border-radius: 26px;
+      overflow: hidden;
+      background: #050608;
+      box-shadow: 0 22px 48px rgba(20,24,38,0.18);
+    }
+
+    .future-question-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .future-description {
+      order: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(12px, 2vw, 22px) clamp(6px, 2vw, 18px);
+    }
+
+    .future-info-meta {
+      display: inline-flex;
+      width: fit-content;
+      margin-bottom: 12px;
+      padding: 8px 11px;
+      border-radius: 999px;
+      background: rgba(9,10,13,0.07);
+      color: rgba(0,0,0,0.62);
+      font-size: 11px;
+      font-weight: 950;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .future-description h3 {
+      margin: 0;
+      color: #000;
+      font-size: clamp(26px, 3.2vw, 42px);
+      line-height: 0.98;
+      letter-spacing: -0.065em;
+      font-weight: 900;
+    }
+
+    .future-description p {
+      max-width: 760px;
+      margin: 14px 0 0;
+      color: rgba(0,0,0,0.66);
+      font-size: 16px;
+      line-height: 1.56;
+      letter-spacing: -0.018em;
+    }
+
+    .future-description .future-release {
+      margin-top: 16px;
+      color: rgba(0,0,0,0.52);
+      font-size: 13px;
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .section {
+      position: relative;
+    }
+
+    .section-chip {
+      position: relative;
+      z-index: 1;
+      display: inline-flex;
+      width: fit-content;
+      margin-bottom: 14px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(9,10,13,0.07);
+      color: rgba(9,10,13,0.58);
+      font-size: 11px;
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .liquid-sheen {
+      overflow: hidden;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.86),
+        0 14px 30px rgba(20,24,38,0.08);
+    }
+
+    .liquid-sheen::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(255,255,255,0.55), transparent 48%);
+      pointer-events: none;
+    }
+
+    .addons-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    .addon-card {
+      position: relative;
+      display: block;
+      width: 100%;
+      aspect-ratio: 2000 / 1000;
+      min-height: 0;
+      border-radius: 30px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(255,255,255,0.84);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.92),
+        0 22px 54px rgba(20,24,38,0.10);
+      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+    }
+
+    .addon-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,0.92);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.94),
+        0 22px 54px rgba(20,24,38,0.12);
+    }
+
+    .addon-inner {
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      overflow: hidden;
+      background: #08090d;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.22);
+    }
+
+    .addon-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      background: #08090d;
+      transition: transform .24s ease, filter .24s ease;
+    }
+
+    .addon-card:hover .addon-inner img {
+      transform: scale(1.01);
+      filter: saturate(1.02) contrast(1.01);
+    }
+
+    .addon-inner::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top, rgba(0,0,0,0.62), transparent 58%),
+        radial-gradient(circle at 18% 12%, rgba(255,255,255,0.28), transparent 26%);
+      pointer-events: none;
+    }
+
+    .addon-card-title {
+      position: absolute;
+      left: 16px;
+      right: 16px;
+      bottom: 16px;
+      z-index: 2;
+      color: #fff;
+      font-size: 17px;
+      line-height: 1.05;
+      font-weight: 900;
+      letter-spacing: -0.045em;
+      text-shadow: 0 10px 28px rgba(0,0,0,0.38);
+    }
+
+    .back-top-wrap {
+      display: flex;
+      justify-content: center;
+      padding: 8px 0 34px;
+    }
+
+    .back-top-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 22px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(255,255,255,0.86);
+      color: rgba(9,10,13,0.72);
+      font-size: 14px;
+      font-weight: 900;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.92),
+        0 18px 42px rgba(20,24,38,0.10);
+      backdrop-filter: blur(22px) saturate(160%);
+      -webkit-backdrop-filter: blur(22px) saturate(160%);
+      transition: transform .22s ease, box-shadow .22s ease, color .22s ease;
+    }
+
+    .back-top-button:hover {
+      transform: translateY(-1px);
+      color: #090a0d;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.95),
+        0 18px 42px rgba(20,24,38,0.11);
+    }
+
 
     .faq {
       display: grid;
@@ -1003,7 +1505,7 @@
       background: rgba(9,10,13,0.07);
       color: rgba(9,10,13,0.62);
       flex: 0 0 auto;
-      transition: transform .24s ease;
+      transition: transform .22s ease;
     }
 
     .faq-a {
@@ -1011,7 +1513,7 @@
       z-index: 1;
       max-height: 0;
       overflow: hidden;
-      transition: max-height .28s ease;
+      transition: max-height .22s ease;
     }
 
     .faq-a p {
@@ -1035,12 +1537,10 @@
     }
 
     .cta-card {
-      position: relative;
+      grid-template-columns: 1.05fr 0.95fr;
       min-height: 440px;
       border-radius: 46px;
       overflow: hidden;
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
       background:
         radial-gradient(circle at 18% 16%, rgba(255,255,255,0.22), transparent 24%),
         radial-gradient(circle at 90% 8%, rgba(179,199,255,0.28), transparent 28%),
@@ -1053,9 +1553,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background:
-        linear-gradient(120deg, rgba(255,255,255,0.17), transparent 38%),
-        radial-gradient(circle at 26% 76%, rgba(255,255,255,0.14), transparent 26%);
+      background: linear-gradient(120deg, rgba(255,255,255,0.17), transparent 38%), radial-gradient(circle at 26% 76%, rgba(255,255,255,0.14), transparent 26%);
       pointer-events: none;
       z-index: 1;
     }
@@ -1136,9 +1634,7 @@
       height: 52px;
       border-radius: 20px;
       flex: 0 0 auto;
-      background:
-        radial-gradient(circle at 30% 25%, #fff, transparent 34%),
-        linear-gradient(135deg, rgba(255,255,255,0.84), rgba(255,255,255,0.18));
+      background: radial-gradient(circle at 30% 25%, #fff, transparent 34%), linear-gradient(135deg, rgba(255,255,255,0.84), rgba(255,255,255,0.18));
       border: 1px solid rgba(255,255,255,0.22);
     }
 
@@ -1184,7 +1680,11 @@
       }
 
       .hero-stage {
-        min-height: 590px;
+        min-height: auto;
+      }
+
+      .hero-collage {
+        min-height: 0;
       }
 
       .product-grid {
@@ -1199,11 +1699,12 @@
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .gallery-card.wide {
+      .gallery-card.wide,
+      .gallery-card.full {
         grid-column: span 12;
       }
 
-      .gallery-card.small {
+      .gallery-card.third {
         grid-column: span 6;
       }
 
@@ -1217,6 +1718,10 @@
 
       .nav-links {
         display: none;
+      }
+
+      .addons-grid {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -1234,47 +1739,54 @@
       }
 
       .hero-stage {
-        min-height: 670px;
         border-radius: 34px;
+        padding: 12px;
       }
 
-      .hero-visual {
-        inset: 12px;
+      .hero-collage {
+        min-height: 0;
+        border-radius: 28px;
       }
 
-      .hero-visual img {
-        width: 84%;
-        height: 31%;
-      }
-
-      .hero-visual img:nth-child(1) {
+      .hero-product-tile.light {
+        width: 74%;
         left: 8%;
-        top: 5%;
+        top: 4%;
       }
 
-      .hero-visual img:nth-child(2) {
-        right: 8%;
-        top: 34%;
+      .hero-product-tile.fog {
+        width: 74%;
+        right: 2%;
+        top: 22%;
       }
 
-      .hero-visual img:nth-child(3) {
-        left: 8%;
-        bottom: 5%;
+      .hero-product-tile.composer {
+        width: 74%;
+        left: 15%;
+        top: 42%;
       }
 
-      .hero-badge {
-        grid-template-columns: 1fr;
-        left: 24px;
-        right: 24px;
-        bottom: 24px;
+      .hero-collage {
+        --future-free-top: 70%;
+        --future-soon-top: 62%;
       }
 
-      .stack-card {
-        min-height: 84px;
+      .hero-product-tile.future-free {
+        width: 55%;
+        left: 6%;
       }
 
-      .hero-actions,
-      .cta-actions {
+      .hero-product-tile.future-soon {
+        width: 55%;
+        right: 3%;
+      }
+
+      .hero-sale-image-link {
+        margin-top: 24px;
+        max-width: calc(100vw - 24px);
+      }
+
+      .hero-actions {
         flex-direction: column;
       }
 
@@ -1286,142 +1798,127 @@
         grid-template-columns: 1fr;
       }
 
-      .gallery-card.small {
+      .gallery-card.third {
         grid-column: span 12;
       }
 
+      .gallery-card.compare-wide {
+        min-height: 0;
+      }
+
+      .gallery-card.compare-small {
+        min-height: 0;
+      }
+
+      .compare-side-labels {
+        top: 12px;
+        left: 12px;
+        right: 12px;
+      }
+
+      .compare-handle {
+        width: 48px;
+        height: 48px;
+        font-size: 18px;
+      }
+
+      .future-updates-box {
+        border-radius: 30px;
+        padding: 20px;
+      }
+
+      .future-row {
+        grid-template-columns: 1fr minmax(96px, 120px);
+        align-items: start;
+      }
+
+      .future-question-media {
+        max-width: 120px;
+        min-height: 0;
+      }
+
       .product-media {
-        height: 245px;
+        height: auto;
+      }
+
+      .addons-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .addon-card {
+        min-height: 0;
+        border-radius: 26px;
+      }
+
+      .addon-inner {
+        border-radius: inherit;
       }
 
       h1 {
         letter-spacing: -0.075em;
       }
     }
+    /* Global letter spacing override */
+    *,
+    *::before,
+    *::after {
+      letter-spacing: 0 !important;
+    }
+
   </style>
 </head>
 
 <body>
   <div class="page" id="top">
-    <div class="liquid-orb orb-a"></div>
-    <div class="liquid-orb orb-b"></div>
-    <div class="liquid-orb orb-c"></div>
-
-    <header class="nav glass">
-      <a class="brand" href="#top" aria-label="Lazy3D Everyday Essentials">
-        <span class="brand-mark"></span>
-        <span>Lazy3D Essentials</span>
-      </a>
-
-      <nav class="nav-links" aria-label="Page navigation">
-        <a href="#included">Included</a>
-        <a href="#deal">Bundle Deal</a>
-        <a href="#workflow">Workflow</a>
-        <a href="#gallery">Media</a>
-        <a href="#faq">FAQ</a>
-      </nav>
-
-      <a class="btn btn-dark" href="#buy">Get Bundle</a>
-    </header>
-
-    <main>
+<main>
       <section class="hero">
         <div class="container hero-grid">
           <div>
-            <div class="eyebrow glass">
-              <span class="eyebrow-dot"></span>
-              Full premium versions - 3 addons in one bundle
-            </div>
-
             <h1>
               <span class="gradient-text">Everyday cinematic tools for Blender scenes.</span>
             </h1>
+
+            <a class="hero-store-link" href="https://superhivemarket.com/creators/lazy3d" target="_blank" rel="noopener noreferrer" aria-label="Open Lazy3D store on Superhive">
+              <img src="https://assets.superhivemarket.com/cache/363f8f3d57a5e1ff262c812df9c36175.jpg" alt="Lazy3D Superhive store preview">
+            </a>
 
             <p class="hero-text">
               Lazy3D Everyday Essentials combines artistic lighting, realistic atmosphere, and final image polish into one practical Blender toolkit.
             </p>
 
-            <div class="hero-actions">
-              <a class="btn btn-dark" href="#buy">Get 3 Addons Bundle</a>
-              <a class="btn btn-light" href="#included">Explore Included Tools</a>
-            </div>
-
-            <div class="proof-row">
-              <span class="proof-pill glass">LightMaster Pro</span>
-              <span class="proof-pill glass">Physical Fog Pro</span>
-              <span class="proof-pill glass">Lazy Composer 2 Pro</span>
-              <span class="proof-pill glass">3 for the price of 2</span>
-            </div>
+            <a class="hero-sale-image-link" href="https://superhivemarket.com/creators/lazy3d" target="_blank" rel="noopener noreferrer" aria-label="Open Lazy3D sale banner on Superhive">
+              <img src="https://assets.superhivemarket.com/cache/bc178e662ef51befdc3fb59acbfa466d.jpg" alt="Lazy3D spring sale banner">
+              <span class="hero-sale-confetti-layer" aria-hidden="true"></span>
+            </a>
           </div>
 
           <div class="hero-stage glass" aria-label="Bundle visual preview">
-            <div class="hero-visual">
-              <img src="https://assets.superhivemarket.com/cache/d4c900a0858509db16ae80ed8c1191b2.jpg" alt="LightMaster Pro lighting preview">
-              <img src="https://assets.superhivemarket.com/store/productimage/1185440/image/xlarge_og-bd87081b1e3d6979ebeec98904d2e981.jpg" alt="Physical Fog atmospheric forest preview">
-              <img src="https://assets.superhivemarket.com/store/productimage/1148849/image/xlarge_og-084358e4297708deb64cf7d87f8f001f.jpg" alt="Lazy Composer cinematic before and after preview">
-              <div class="hero-glow"></div>
+            <div class="hero-collage">
+              <div class="hero-product-tile light" aria-label="LightMaster Pro preview">
+                <img src="https://assets.superhivemarket.com/cache/d4c900a0858509db16ae80ed8c1191b2.jpg" alt="LightMaster Pro thumbnail preview">
+              </div>
+
+              <div class="hero-product-tile fog" aria-label="Physical Fog Pro preview">
+                <img src="https://assets.superhivemarket.com/cache/7c6b710e3854f6f4097030d621708bf5.jpg" alt="Physical Fog thumbnail preview">
+              </div>
+
+              <div class="hero-product-tile composer" aria-label="Lazy Composer 2 Pro preview">
+                <img src="https://assets.superhivemarket.com/cache/05fa08fd86d651d7baa763fe3e53c6b8.jpg" alt="Lazy Composer 2 Pro thumbnail preview">
+              </div>
+
+              <div class="hero-product-tile future-soon" aria-label="Future Lazy3D addon coming soon">
+                <img src="https://assets.superhivemarket.com/cache/9246a5434a09d00de6d55c9b996c1b7d.jpg" alt="Future Lazy3D addon coming soon preview">
+                <div class="coming-card-overlay">Coming soon</div>
+              </div>
+
+              <div class="hero-product-tile future-free" aria-label="Future Lazy3D addon coming soon for free">
+                <img src="https://assets.superhivemarket.com/cache/9246a5434a09d00de6d55c9b996c1b7d.jpg" alt="Future Lazy3D free addon coming soon preview">
+                <div class="coming-card-overlay">Coming soon for free</div>
+              </div>
+
             </div>
 
-            <div class="hero-badge">
-              <div class="stack-card glass">
-                <small>Lighting</small>
-                <strong>LightMaster Pro</strong>
-              </div>
 
-              <div class="stack-card glass">
-                <small>Atmosphere</small>
-                <strong>Physical Fog Pro</strong>
-              </div>
-
-              <div class="stack-card glass">
-                <small>Post FX</small>
-                <strong>Lazy Composer 2 Pro</strong>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="deal">
-        <div class="container">
-          <div class="bundle-offer">
-            <article class="offer-card dark">
-              <span class="deal-label">Bundle Deal - 3 for the price of 2</span>
-              <h2>One compact bundle for your daily render workflow.</h2>
-              <p class="section-text">
-                Light the scene, add volumetric depth, then finish the image with cinematic post-processing. Three production-focused Lazy3D tools packed into one creator bundle.
-              </p>
-              <div class="hero-actions">
-                <a class="btn btn-light" href="#buy">Get the Bundle</a>
-                <a class="btn btn-light" href="#included">See Addons</a>
-              </div>
-            </article>
-
-            <div class="price-line">
-              <article class="price-card glass">
-                <div class="price-card-top"></div>
-                <div>
-                  <h3>Light</h3>
-                  <p>Fast texture-driven lighting workflow with ready-made setups and artistic light textures.</p>
-                </div>
-              </article>
-
-              <article class="price-card glass">
-                <div class="price-card-top"></div>
-                <div>
-                  <h3>Atmosphere</h3>
-                  <p>Fog, mist, haze, volumetric depth, FogPlanes, and physical volume interaction.</p>
-                </div>
-              </article>
-
-              <article class="price-card glass">
-                <div class="price-card-top"></div>
-                <div>
-                  <h3>Finish</h3>
-                  <p>Film-style color, lens effects, grain, halation, bloom, streaks, and final polish.</p>
-                </div>
-              </article>
-            </div>
           </div>
         </div>
       </section>
@@ -1445,44 +1942,36 @@
 
               <div class="product-content">
                 <span class="tag">Lighting</span>
-                <h3>LightMaster Pro</h3>
-                <p>
-                  A fast lighting workflow for browsing assets, importing ready-made setups, placing lights directly in the viewport, and shaping the final look with texture-driven controls.
-                </p>
-
+                <h3>Light Master Pro</h3>
+                <p>A fast lighting workflow for browsing assets, importing ready-made setups, placing lights directly in the viewport, and shaping the final look with texture-driven controls.</p>
                 <ul class="check-list">
                   <li>400+ lighting assets and light textures</li>
                   <li>Advanced Placement for fast light aiming</li>
                   <li>Cycles and Eevee workflows</li>
                   <li>PaintMask tools for editing light textures</li>
                 </ul>
-
                 <div class="product-link">
-                  <a class="btn btn-light" href="https://superhivemarket.com/products/light-master-pro" target="_blank" rel="noopener">View LightMaster Pro</a>
+                  <a class="btn btn-light" href="https://superhivemarket.com/products/light-master-pro" target="_blank" rel="noopener">View Light Master Pro</a>
                 </div>
               </div>
             </article>
 
             <article class="product-card glass">
               <div class="product-media">
-                <img src="https://assets.superhivemarket.com/store/productimage/1185440/image/xlarge_og-bd87081b1e3d6979ebeec98904d2e981.jpg" alt="Physical Fog atmospheric render preview">
+                <img src="https://assets.superhivemarket.com/cache/7c6b710e3854f6f4097030d621708bf5.jpg" alt="Physical Fog thumbnail preview">
                 <span class="media-label">Fog, mist and haze</span>
               </div>
 
               <div class="product-content">
                 <span class="tag">Atmosphere</span>
                 <h3>Physical Fog Pro</h3>
-                <p>
-                  Create cinematic volumetric fog in minutes with AutoFog, layered presets, FogPlanes, photorealistic scattering, and dynamic physical volume interaction.
-                </p>
-
+                <p>Create cinematic volumetric fog in minutes with AutoFog, layered presets, FogPlanes, photorealistic scattering, and dynamic physical volume interaction.</p>
                 <ul class="check-list">
                   <li>AutoFog system with instant scene depth</li>
                   <li>Distance, height, wind, and noise controls</li>
                   <li>FogPlanes with flowmaps - 49 assets</li>
                   <li>Photorealistic Volume for Cycles</li>
                 </ul>
-
                 <div class="product-link">
                   <a class="btn btn-light" href="https://superhivemarket.com/products/physical-fog-addon" target="_blank" rel="noopener">View Physical Fog</a>
                 </div>
@@ -1491,24 +1980,20 @@
 
             <article class="product-card glass">
               <div class="product-media">
-                <img src="https://assets.superhivemarket.com/store/productimage/1148849/image/xlarge_og-084358e4297708deb64cf7d87f8f001f.jpg" alt="Lazy Composer 2 Pro before and after render preview">
+                <img src="https://assets.superhivemarket.com/cache/05fa08fd86d651d7baa763fe3e53c6b8.jpg" alt="Lazy Composer 2 Pro thumbnail preview">
                 <span class="media-label">Film look and post FX</span>
               </div>
 
               <div class="product-content">
                 <span class="tag">Composition</span>
                 <h3>Lazy Composer 2 Pro</h3>
-                <p>
-                  A reusable Blender compositor stack for cinematic color, lens effects, film grain, bloom, halation, glint, vignette, and final image polish.
-                </p>
-
+                <p>A reusable Blender compositor stack for cinematic color, lens effects, film grain, bloom, halation, glint, vignette, and final image polish.</p>
                 <ul class="check-list">
                   <li>One-click looks with presets</li>
                   <li>Advanced color correction controls</li>
                   <li>Lens dirt, distortion, bloom, and streaks</li>
                   <li>Non-destructive compositor workflow</li>
                 </ul>
-
                 <div class="product-link">
                   <a class="btn btn-light" href="https://superhivemarket.com/products/lazy-composer-2-pro" target="_blank" rel="noopener">View Lazy Composer</a>
                 </div>
@@ -1517,164 +2002,179 @@
           </div>
         </div>
       </section>
-
-      <section id="workflow">
+      <section class="future-updates-section" id="future-updates">
         <div class="container">
-          <div class="workflow-shell glass">
-            <div class="workflow-copy">
-              <div class="kicker">Workflow</div>
-              <h2>From flat render to cinematic scene in three practical layers.</h2>
-              <p class="section-text">
-                The bundle is not just three separate addons. It is a simple visual pipeline: establish the light, build atmosphere, then finish the image.
+          <div class="future-updates-box">
+            <div class="future-updates-head">
+              <div class="kicker">Future free updates</div>
+              <h2>Two more Lazy3D addons are planned for this bundle.</h2>
+              <p class="future-updates-note">
+                <strong>Buy the bundle now and receive both future addons for free as updates when they are released.</strong>
+                No extra charge is added for these planned addons, and the current bundle price does not include any “pre-payment” for unreleased tools. You are only paying for the addons included today, while future additions will be added as a free bonus. As new addons are added to the bundle, the bundle price is expected to increase accordingly.
               </p>
-              <div class="hero-actions">
-                <a class="btn btn-dark" href="#gallery">See Media</a>
-                <a class="btn btn-light" href="#faq">Read FAQ</a>
-              </div>
             </div>
 
-            <div class="workflow-steps">
-              <div class="step glass">
-                <div class="step-num">01</div>
-                <div>
-                  <strong>Build the lighting mood</strong>
-                  <span>Use LightMaster Pro to test cinematic light directions, gobos, projected textures, and ready-made lighting setups.</span>
+            <div class="future-table" aria-label="Future addons included as free updates">
+              <article class="future-row">
+                <div class="future-question-media">
+                  <img src="https://assets.superhivemarket.com/cache/9246a5434a09d00de6d55c9b996c1b7d.jpg" alt="Future photorealistic materials addon preview">
                 </div>
-              </div>
+                <div class="future-description">
+                  <span class="future-info-meta">Free future update</span>
+                  <h3>Photorealistic Materials & Procedural Metals</h3>
+                  <p>
+                    A planned addon focused on faster work with photorealistic materials and procedural metals. It is intended to help artists build convincing surfaces faster, without rebuilding material systems from scratch each time.
+                  </p>
+                  <div class="future-release">Planned before the end of summer</div>
+                </div>
+              </article>
 
-              <div class="step glass">
-                <div class="step-num">02</div>
-                <div>
-                  <strong>Add depth and atmosphere</strong>
-                  <span>Use Physical Fog Pro for haze, ground fog, light beams, dense fog, distance separation, and volumetric realism.</span>
+              <article class="future-row">
+                <div class="future-question-media">
+                  <img src="https://assets.superhivemarket.com/cache/9246a5434a09d00de6d55c9b996c1b7d.jpg" alt="Future ambient particle effects addon preview">
                 </div>
-              </div>
-
-              <div class="step glass">
-                <div class="step-num">03</div>
-                <div>
-                  <strong>Finish the image</strong>
-                  <span>Use Lazy Composer 2 Pro for color, glow, grain, halation, lens artifacts, vignette, and final cinematic polish.</span>
+                <div class="future-description">
+                  <span class="future-info-meta">Free future update</span>
+                  <h3>Ambient Particle Effects</h3>
+                  <p>
+                    A planned addon for quickly adding ambient particle effects such as falling leaves, insects, dust, small debris and other atmosphere details in just a few clicks.
+                  </p>
+                  <div class="future-release">Planned before the end of summer</div>
                 </div>
-              </div>
+              </article>
             </div>
           </div>
         </div>
       </section>
+
 
       <section id="gallery">
         <div class="container">
           <div class="section-head">
-            <div class="kicker">Media from products</div>
-            <h2>Real previews from the included addons.</h2>
+            <div class="kicker">Real previews</div>
+            <h2>Addon Previews</h2>
             <p class="section-text">
-              The layout uses product media so the bundle page feels connected to the actual tools, not like a generic bundle block.
+              Compare the result directly inside the page. Move each slider to see the difference between the source render and the addon-enhanced result.
             </p>
           </div>
 
           <div class="gallery-grid">
-            <article class="gallery-card wide">
-              <img src="https://assets.superhivemarket.com/store/productimage/1185443/image/xlarge_og-f9222559c74dd586e33ffefaaa5f2835.jpg" alt="Physical Fog car in fog preview">
-              <div class="gallery-caption">
-                <div>
-                  <strong>Physical Fog Pro</strong>
-                  <span>Dense cinematic fog and volumetric depth</span>
+            <article class="gallery-card wide compare-card compare-wide">
+              <div class="compare-shell" style="--compare-position: 48%;">
+                <div class="compare-layer after">
+                  <img src="https://assets.superhivemarket.com/cache/099dfd8f05ff6395f09b4bb6d5a7939c.png" alt="Lazy Composer 2 Pro after result in cave scene">
                 </div>
+                <div class="compare-layer before">
+                  <img src="https://assets.superhivemarket.com/cache/ee865049f567ac067415e605dd590cca.png" alt="Lazy Composer 2 Pro before cave scene">
+                </div>
+                <div class="compare-side-labels">
+                  <span class="compare-side-label">Before</span>
+                  <span class="compare-side-label">After</span>
+                </div>
+                <div class="compare-divider"></div>
+                <div class="compare-handle">↔</div>
+                <input class="compare-range" type="range" min="0" max="100" value="48" aria-label="Compare before and after for Lazy Composer 2 Pro cave scene">
               </div>
+              <div class="gallery-caption"><strong>Lazy Composer 2 Pro</strong><span>Before and after film-style finishing</span></div>
             </article>
 
-            <article class="gallery-card wide">
-              <img src="https://assets.superhivemarket.com/store/productimage/1148853/image/xlarge_og-24c765c8c715788e6f4f6d71211e6958.jpg" alt="Lazy Composer aircraft before and after preview">
-              <div class="gallery-caption">
-                <div>
-                  <strong>Lazy Composer 2 Pro</strong>
-                  <span>Before and after film-style finishing</span>
+            <article class="gallery-card wide compare-card compare-wide">
+              <div class="compare-shell" style="--compare-position: 50%;">
+                <div class="compare-layer after">
+                  <img src="https://assets.superhivemarket.com/cache/f9b93a8f838d0de98c3db55d1ddef9c0.png" alt="Lazy Composer 2 Pro after result on vintage car">
                 </div>
+                <div class="compare-layer before">
+                  <img src="https://assets.superhivemarket.com/cache/d3b8e25304dc23803bf2708248d8930c.png" alt="Lazy Composer 2 Pro before result on vintage car">
+                </div>
+                <div class="compare-side-labels">
+                  <span class="compare-side-label">Before</span>
+                  <span class="compare-side-label">After</span>
+                </div>
+                <div class="compare-divider"></div>
+                <div class="compare-handle">↔</div>
+                <input class="compare-range" type="range" min="0" max="100" value="50" aria-label="Compare before and after for Lazy Composer 2 Pro car scene">
               </div>
+              <div class="gallery-caption"><strong>Lazy Composer 2 Pro</strong><span>Compare the clean render and the film-style final look</span></div>
             </article>
 
-            <article class="gallery-card small">
-              <img src="https://assets.superhivemarket.com/cache/cfb4bf8f684b55b02a97dbfd15aed3a7.jpg" alt="Default lighting comparison preview">
-              <div class="gallery-caption">
-                <div>
-                  <strong>Default Light</strong>
-                  <span>Before lighting workflow</span>
-                </div>
-              </div>
+            <article class="gallery-card full fog-media fog-large">
+              <img src="https://assets.superhivemarket.com/cache/13fad0dd72046ce890732f7b3184b88c.gif" alt="Physical Fog Pro atmospheric house preview">
+              <div class="gallery-caption"><strong>Physical Fog Pro</strong><span>Soft scene depth and cinematic haze</span></div>
             </article>
 
-            <article class="gallery-card small">
-              <img src="https://assets.superhivemarket.com/cache/d4c900a0858509db16ae80ed8c1191b2.jpg" alt="LightMaster Pro lighting result preview">
-              <div class="gallery-caption">
-                <div>
-                  <strong>LightMaster Pro</strong>
-                  <span>Stylized lighting result</span>
-                </div>
-              </div>
+            <article class="gallery-card full fog-media fog-wide">
+              <img src="https://assets.superhivemarket.com/cache/c708577ea86e9ff27969efe6143a6262.gif" alt="Physical Fog Pro volume fog preview with car in tunnel">
+              <div class="gallery-caption"><strong>Volume Fog</strong><span>Dense atmospheric fog for environments</span></div>
             </article>
 
-            <article class="gallery-card small">
-              <img src="https://assets.superhivemarket.com/store/productimage/1185445/image/xlarge_og-db614ea477c6d9b59510c99f6554e229.jpg" alt="Physical Fog street fog preview">
-              <div class="gallery-caption">
-                <div>
-                  <strong>Atmosphere</strong>
-                  <span>Street haze and scene depth</span>
-                </div>
-              </div>
+            <article class="gallery-card full fog-media fog-wide">
+              <img src="https://assets.superhivemarket.com/cache/3d42518bcdf8ce78882ced239f5fc012.gif" alt="Physical Fog Pro forest fog preview">
+              <div class="gallery-caption"><strong>Physical Fog Pro</strong><span>Flexible 1000 x 300 atmospheric preview</span></div>
             </article>
 
-            <article class="gallery-card small">
-              <img src="https://assets.superhivemarket.com/store/productimage/1148854/image/xlarge_og-c2e851e9f086b33119d19ba8247521a0.jpg" alt="Lazy Composer interior before and after preview">
-              <div class="gallery-caption">
-                <div>
-                  <strong>Final Polish</strong>
-                  <span>Color, light and lens effects</span>
+            <article class="gallery-card full compare-card compare-small lightmaster-showcase">
+              <div class="compare-shell" style="--compare-position: 50%;">
+                <div class="compare-layer after">
+                  <img src="https://assets.superhivemarket.com/cache/eb03c17532713e88e01abcb8ebce68a1.jpg" alt="LightMaster Pro comparison without addon 1">
                 </div>
+                <div class="compare-layer before">
+                  <img src="https://assets.superhivemarket.com/cache/bf9f693743aebc55e2e9e72f59b88f2d.jpg" alt="LightMaster Pro comparison with addon 1">
+                </div>
+                <div class="compare-side-labels">
+                  <span class="compare-side-label">With addon</span>
+                  <span class="compare-side-label">Without addon</span>
+                </div>
+                <div class="compare-divider"></div>
+                <div class="compare-handle">↔</div>
+                <input class="compare-range" type="range" min="0" max="100" value="50" aria-label="Compare LightMaster Pro with addon and without addon, example 1">
               </div>
+              <div class="gallery-caption"><strong>LightMaster Pro</strong><span>Move the slider to compare with addon and without addon</span></div>
+            </article>
+
+            <article class="gallery-card full compare-card compare-small lightmaster-showcase">
+              <div class="compare-shell" style="--compare-position: 50%;">
+                <div class="compare-layer after">
+                  <img src="https://assets.superhivemarket.com/cache/caf1463b707744a46a361bba60957727.jpg" alt="LightMaster Pro comparison without addon 2">
+                </div>
+                <div class="compare-layer before">
+                  <img src="https://assets.superhivemarket.com/cache/99ce2f2420b4a2a3bd5050772d441396.jpg" alt="LightMaster Pro comparison with addon 2">
+                </div>
+                <div class="compare-side-labels">
+                  <span class="compare-side-label">With addon</span>
+                  <span class="compare-side-label">Without addon</span>
+                </div>
+                <div class="compare-divider"></div>
+                <div class="compare-handle">↔</div>
+                <input class="compare-range" type="range" min="0" max="100" value="50" aria-label="Compare LightMaster Pro with addon and without addon, example 2">
+              </div>
+              <div class="gallery-caption"><strong>LightMaster Pro</strong><span>Direct comparison between addon result and base render</span></div>
+            </article>
+
+            <article class="gallery-card full compare-card compare-small lightmaster-showcase">
+              <div class="compare-shell" style="--compare-position: 50%;">
+                <div class="compare-layer after">
+                  <img src="https://assets.superhivemarket.com/cache/073a4945f40666ea2feb8c1506f74031.jpg" alt="LightMaster Pro comparison without addon 3">
+                </div>
+                <div class="compare-layer before">
+                  <img src="https://assets.superhivemarket.com/cache/1ecbf5a32fcabfee903aa15a6a5ddcb3.jpg" alt="LightMaster Pro comparison with addon 3">
+                </div>
+                <div class="compare-side-labels">
+                  <span class="compare-side-label">With addon</span>
+                  <span class="compare-side-label">Without addon</span>
+                </div>
+                <div class="compare-divider"></div>
+                <div class="compare-handle">↔</div>
+                <input class="compare-range" type="range" min="0" max="100" value="50" aria-label="Compare LightMaster Pro with addon and without addon, example 3">
+              </div>
+              <div class="gallery-caption"><strong>LightMaster Pro</strong><span>Interactive preview of the addon result versus the original image</span></div>
             </article>
           </div>
         </div>
       </section>
-
-      <section>
+<section id="faq">
         <div class="container">
           <div class="section-head">
-            <div class="kicker">Why this bundle</div>
-            <h2>Built for the effects artists actually repeat across many projects.</h2>
-          </div>
 
-          <div class="feature-grid">
-            <article class="feature-card glass">
-              <div class="feature-icon"></div>
-              <h3>Faster look development</h3>
-              <p>Start with ready-made lighting, fog and post-processing systems instead of rebuilding the same setup every time.</p>
-            </article>
-
-            <article class="feature-card glass">
-              <div class="feature-icon"></div>
-              <h3>More cinematic depth</h3>
-              <p>Lighting and fog work together to add separation, atmosphere, volume, and stronger visual hierarchy.</p>
-            </article>
-
-            <article class="feature-card glass">
-              <div class="feature-icon"></div>
-              <h3>Cleaner final renders</h3>
-              <p>Lazy Composer adds the final film-style pass: color, grain, bloom, streaks, halation, glint and vignette.</p>
-            </article>
-
-            <article class="feature-card glass">
-              <div class="feature-icon"></div>
-              <h3>Better value</h3>
-              <p>Get three full premium Lazy3D addons together as an everyday production bundle.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="faq">
-        <div class="container">
-          <div class="section-head">
-            <div class="kicker">FAQ</div>
             <h2>Common questions.</h2>
           </div>
 
@@ -1685,7 +2185,7 @@
                 <span class="faq-plus">+</span>
               </button>
               <div class="faq-a">
-                <p>The bundle includes LightMaster Pro, Physical Fog Pro, and Lazy Composer 2 Pro.</p>
+                <p>The bundle includes LightMaster Pro, Physical Fog Pro, and Lazy Composer 2 Pro. By the end of summer, two more addons will be added as a free update: one for procedural photorealistic metal materials, and another for quickly adding ambient particle effects.</p>
               </div>
             </article>
 
@@ -1722,53 +2222,80 @@
         </div>
       </section>
 
-      <section class="cta" id="buy">
+      <section class="section reveal" id="addons">
         <div class="container">
-          <div class="cta-card">
-            <div class="cta-copy">
-              <div class="kicker" style="color: rgba(255,255,255,0.52);">Lazy3D Everyday Essentials</div>
-              <h2>Get lighting, atmosphere, and final polish in one Blender bundle.</h2>
-              <p>
-                A practical toolkit for artists who want faster cinematic lighting, realistic fog and haze, and a stronger final image without rebuilding the same workflows from scratch.
-              </p>
+          <div class="section-head" style="text-align: center; margin-left: auto; margin-right: auto;">
+            <div class="section-chip liquid-sheen">Lazy3D</div>
+            <h2>More Lazy3D Addons</h2>
+          </div>
 
-              <div class="hero-actions">
-                <a class="btn btn-light" href="https://superhivemarket.com/products/light-master-pro" target="_blank" rel="noopener">LightMaster Pro</a>
-                <a class="btn btn-light" href="https://superhivemarket.com/products/physical-fog-addon" target="_blank" rel="noopener">Physical Fog</a>
-                <a class="btn btn-light" href="https://superhivemarket.com/products/lazy-composer-2-pro" target="_blank" rel="noopener">Lazy Composer</a>
+          <div class="addons-grid">
+            <a class="addon-card" href="https://superhivemarket.com/products/physical-fog-addon" target="_blank" rel="noopener noreferrer">
+              <div class="addon-inner">
+                <img src="https://assets.superhivemarket.com/cache/ccc9462aa9ba7e7a1951a306910d3a0f.jpg" alt="Physical Fog">
+                <div class="addon-card-title">Physical Fog</div>
               </div>
-            </div>
+            </a>
 
-            <div class="cta-visual">
-              <div class="floating-pack">
-                <div class="pack-item">
-                  <div>
-                    <strong>LightMaster Pro</strong>
-                    <span>Lighting assets and placement</span>
-                  </div>
-                  <div class="pack-dot"></div>
-                </div>
-
-                <div class="pack-item">
-                  <div>
-                    <strong>Physical Fog Pro</strong>
-                    <span>Fog, mist, haze and volume</span>
-                  </div>
-                  <div class="pack-dot"></div>
-                </div>
-
-                <div class="pack-item">
-                  <div>
-                    <strong>Lazy Composer 2 Pro</strong>
-                    <span>Film look and compositor polish</span>
-                  </div>
-                  <div class="pack-dot"></div>
-                </div>
+            <a class="addon-card" href="https://superhivemarket.com/products/lazy-composer-2-pro" target="_blank" rel="noopener noreferrer">
+              <div class="addon-inner">
+                <img src="https://assets.superhivemarket.com/cache/8422a38a158a2f019bdaac8fd3ab05e7.png" alt="Lazy Composer 2 Pro">
+                <div class="addon-card-title">Lazy Composer 2 Pro</div>
               </div>
-            </div>
+            </a>
+
+            <a class="addon-card" href="https://superhivemarket.com/products/fauna-master-pro" target="_blank" rel="noopener noreferrer">
+              <div class="addon-inner">
+                <img src="https://assets.superhivemarket.com/cache/60686f07bbc879ade8381a9a3342c128.jpg" alt="Fauna Master Pro">
+                <div class="addon-card-title">Fauna Master Pro</div>
+              </div>
+            </a>
+
+            <a class="addon-card" href="https://blendermarket.com/products/physical-weather-master" target="_blank" rel="noopener noreferrer">
+              <div class="addon-inner">
+                <img src="https://assets.superhivemarket.com/cache/9695dbd9f004846ec6eec88f8114b2f3.png" alt="Physical Weather FX">
+                <div class="addon-card-title">Physical Weather FX</div>
+              </div>
+            </a>
+
+            <a class="addon-card" href="https://superhivemarket.com/products/water-vfx-master-real-time-fluid-effects" target="_blank" rel="noopener noreferrer">
+              <div class="addon-inner">
+                <img src="https://assets.superhivemarket.com/cache/cfcfb17dc2af54669708d3cbcd20f923.png" alt="Water VFX Master">
+                <div class="addon-card-title">Water VFX Master</div>
+              </div>
+            </a>
+
+            <a class="addon-card" href="https://superhivemarket.com/products/physical-water-deluxe" target="_blank" rel="noopener noreferrer">
+              <div class="addon-inner">
+                <img src="https://assets.superhivemarket.com/cache/5ef578ab6304302c11de42a2ad6c9c39.png" alt="Physical Water FX">
+                <div class="addon-card-title">Physical Water FX</div>
+              </div>
+            </a>
+
+            <a class="addon-card" href="https://superhivemarket.com/products/physical-cables-next-gen" target="_blank" rel="noopener noreferrer">
+              <div class="addon-inner">
+                <img src="https://assets.superhivemarket.com/cache/051a59ae9f8decbaec40456d4fc98767.jpg" alt="Physical Cables Next-Gen">
+                <div class="addon-card-title">Physical Cables Next-Gen</div>
+              </div>
+            </a>
+
+            <a class="addon-card" href="https://superhivemarket.com/products/geodroplets-plus-ultimate-droplet-toolkit" target="_blank" rel="noopener noreferrer">
+              <div class="addon-inner">
+                <img src="https://assets.superhivemarket.com/cache/7928c9dbf63d3b85c3c3e5788e6d9adf.png" alt="GeoDroplets Plus">
+                <div class="addon-card-title">GeoDroplets Plus</div>
+              </div>
+            </a>
           </div>
         </div>
       </section>
+
+      <div class="back-top-wrap">
+        <a class="back-top-button" href="#top">
+          <span>Back to top</span>
+        </a>
+      </div>
+
+
     </main>
 
     <footer class="footer">
@@ -1781,6 +2308,21 @@
   </div>
 
   <script>
+    const compareRanges = document.querySelectorAll(".compare-range");
+
+    compareRanges.forEach((range) => {
+      const shell = range.closest(".compare-shell");
+
+      const updateCompare = () => {
+        shell.style.setProperty("--compare-position", `${range.value}%`);
+      };
+
+      updateCompare();
+      range.addEventListener("input", updateCompare);
+      range.addEventListener("change", updateCompare);
+    });
+
+
     const faqItems = document.querySelectorAll(".faq-item");
 
     faqItems.forEach((item) => {
@@ -1804,22 +2346,152 @@
     backTop.addEventListener("click", () => {
       window.scrollTo({
         top: 0,
-        behavior: "smooth"
+        behavior: "auto"
       });
     });
 
-    const tiltCards = document.querySelectorAll(".product-card, .hero-stage, .feature-card");
+    const draggableHeroTiles = document.querySelectorAll(".hero-product-tile");
+
+    draggableHeroTiles.forEach((tile) => {
+      let isDragging = false;
+      let startX = 0;
+      let startY = 0;
+      let startLeft = 0;
+      let startTop = 0;
+      let parentRect = null;
+      let tileRect = null;
+
+      const getNumber = (value) => {
+        const parsed = parseFloat(value);
+        return Number.isFinite(parsed) ? parsed : 0;
+      };
+
+      tile.addEventListener("pointerdown", (event) => {
+        const parent = tile.closest(".hero-collage");
+        if (!parent) return;
+
+        isDragging = true;
+        tile.classList.add("is-dragging");
+        tile.setPointerCapture(event.pointerId);
+
+        parentRect = parent.getBoundingClientRect();
+        tileRect = tile.getBoundingClientRect();
+
+        const computed = window.getComputedStyle(tile);
+        startLeft = tileRect.left - parentRect.left;
+        startTop = tileRect.top - parentRect.top;
+
+        tile.style.left = `${startLeft}px`;
+        tile.style.top = `${startTop}px`;
+        tile.style.right = "auto";
+        tile.style.bottom = "auto";
+
+        startX = event.clientX;
+        startY = event.clientY;
+
+        event.preventDefault();
+      });
+
+      tile.addEventListener("pointermove", (event) => {
+        if (!isDragging || !parentRect || !tileRect) return;
+
+        const nextLeftRaw = startLeft + event.clientX - startX;
+        const nextTopRaw = startTop + event.clientY - startY;
+
+        const maxLeft = parentRect.width - tileRect.width;
+        const maxTop = parentRect.height - tileRect.height;
+
+        const nextLeft = Math.min(Math.max(0, nextLeftRaw), Math.max(0, maxLeft));
+        const nextTop = Math.min(Math.max(0, nextTopRaw), Math.max(0, maxTop));
+
+        tile.style.left = `${nextLeft}px`;
+        tile.style.top = `${nextTop}px`;
+      });
+
+      const stopDragging = (event) => {
+        if (!isDragging) return;
+
+        isDragging = false;
+        tile.classList.remove("is-dragging");
+
+        try {
+          tile.releasePointerCapture(event.pointerId);
+        } catch (error) {}
+
+        parentRect = null;
+        tileRect = null;
+      };
+
+      tile.addEventListener("pointerup", stopDragging);
+      tile.addEventListener("pointercancel", stopDragging);
+    });
+
+    const saleBanner = document.querySelector(".hero-sale-image-link");
+
+    if (saleBanner) {
+      const confettiLayer = saleBanner.querySelector(".hero-sale-confetti-layer");
+      const confettiColors = ["#ffd84d", "#ffffff", "#ff4d4d", "#5ce1e6", "#8b5cf6", "#7cff6b"];
+      let confettiTimer = null;
+
+      const spawnConfettiPiece = () => {
+        if (!confettiLayer) return;
+
+        const piece = document.createElement("span");
+        piece.className = "hero-sale-confetti-piece";
+
+        const sizeW = 6 + Math.random() * 8;
+        const sizeH = 10 + Math.random() * 12;
+        const left = Math.random() * 100;
+        const drift = (Math.random() * 120 - 60).toFixed(2) + "px";
+        const rotate = (Math.random() * 720 - 360).toFixed(2) + "deg";
+        const duration = (1.8 + Math.random() * 1.8).toFixed(2) + "s";
+        const color = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+
+        piece.style.left = `${left}%`;
+        piece.style.width = `${sizeW}px`;
+        piece.style.height = `${sizeH}px`;
+        piece.style.background = color;
+        piece.style.animationDuration = duration;
+        piece.style.setProperty("--confetti-x", drift);
+        piece.style.setProperty("--confetti-rotate", rotate);
+
+        confettiLayer.appendChild(piece);
+
+        piece.addEventListener("animationend", () => {
+          piece.remove();
+        });
+      };
+
+      const startConfetti = () => {
+        if (confettiTimer) return;
+
+        for (let i = 0; i < 18; i += 1) {
+          spawnConfettiPiece();
+        }
+
+        confettiTimer = setInterval(() => {
+          for (let i = 0; i < 4; i += 1) {
+            spawnConfettiPiece();
+          }
+        }, 120);
+      };
+
+      const stopConfetti = () => {
+        if (confettiTimer) {
+          clearInterval(confettiTimer);
+          confettiTimer = null;
+        }
+      };
+
+      saleBanner.addEventListener("mouseenter", startConfetti);
+      saleBanner.addEventListener("mouseleave", stopConfetti);
+    }
+
+    const tiltCards = document.querySelectorAll(".product-card");
 
     tiltCards.forEach((card) => {
-      card.addEventListener("mousemove", (event) => {
-        const rect = card.getBoundingClientRect();
-        const x = event.clientX - rect.left;
-        const y = event.clientY - rect.top;
-
-        const rotateX = ((y / rect.height) - 0.5) * -3;
-        const rotateY = ((x / rect.width) - 0.5) * 3;
-
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-3px)`;
+      card.addEventListener("mousemove", () => {
+        card.style.transform = "translateY(-2px)";
       });
 
       card.addEventListener("mouseleave", () => {
